@@ -76,10 +76,6 @@ public class Judgement extends Game {
 	static int SCREENWIDTH = 1200; //1226 //382
 	static int SCREENHEIGHT = 700;
 	
-	int meme = 420;
-
-	//Test
-	
 	// basically keeps player in center of screen
 	static int CENTERX = 530;
 	static int CENTERY = 270;
