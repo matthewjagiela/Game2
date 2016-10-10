@@ -78,6 +78,8 @@ public class Judgement extends Game {
 	
 	int meme = 420;
 
+	//Test
+	
 	// basically keeps player in center of screen
 	static int CENTERX = 530;
 	static int CENTERY = 270;
