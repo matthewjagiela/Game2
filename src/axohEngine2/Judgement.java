@@ -220,9 +220,25 @@ public class Judgement extends Game {
 	 * 
 	 * Set up the super class Game and set the window to appear
 	 **********************************************************************/
+	/**
+	 * isWindows determines what operating system is running and will return an FPS suitable for it. 
+	 * @return prefered FPS based on Operating System
+	 */
+	public static int isWindows(){ //NEW METHOD SCRUM CYCLE 1
+		if(System.getProperty("os.name").startsWith("Windows")){ //The operating system is windows and can hold a higher FPS
+			System.out.println("Windows");
+			return 110; 
+		}
+		else{
+			System.out.println("Mac");
+			return 30; //The Operating system is macOS and needs a lower FPS
+		}
+	}
 	public Judgement() {
+		super(isWindows(),SCREENWIDTH,SCREENHEIGHT); //isWindows will determine the correct frame rate for the game to run smoothly based on the OS
+		
 	//	super(130, 1226, 382); // the 130 is frame rate!!, 1200 is screen width, 700 is screen height
-		super(110, SCREENWIDTH, SCREENHEIGHT);
+		//super(110, SCREENWIDTH, SCREENHEIGHT);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
