@@ -468,12 +468,13 @@ public class Map {
 		Mob mob;
 		for(int i = 0; i < mobs.size(); i++)
 		{			
+			//System.out.println("mobs.size = " + mobs.size());//Get the count of the array
 			if(i + 1 > mobs.size() - 1)
 			{
 				break;
 			}
 
-			if (mobs.get(i).getFullBoundsLocation().y > mobs.get(i+1).getFullBoundsLocation().y)
+			if (mobs.get(i).getFullBoundsLocation().y > mobs.get(i).getFullBoundsLocation().y) //Changed mobs.get(i+1) to just i to fix the crashing issue along with unlocking special character.
 			{
 				mob = mobs.get(i);
 				mobs.set(i, mobs.get(i + 1));

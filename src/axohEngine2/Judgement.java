@@ -79,7 +79,6 @@ public class Judgement extends Game {
 	// basically keeps player in center of screen
 	static int CENTERX = 530;
 	static int CENTERY = 270;
-	int hi = 5;
 	//--------- Miscelaneous ---------
 	//booleans - A way of detecting a pushed key in game
 	//random - Use this to generate a random number

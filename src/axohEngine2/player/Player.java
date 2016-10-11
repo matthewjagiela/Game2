@@ -92,9 +92,16 @@ public class Player
 			LinkedList<AnimatedSprite> sprites, int playerNumber)
 	{
 		ListIterator<AnimatedSprite> listIterator = sprites.listIterator();
+		System.out.println("Player Number ="+ playerNumber);
+		//---------------THIS IS A TEMPORARY FIX! SHOULD EVENTUALLY ALLOW PLAYERS TO LOOP BOTH CHARACTERS WITH Y---------/
+		if(playerNumber > 1){
+			playerNumber = 1;
+		}
 		
+		//ELEPHANTS!
 		if (playerNumber == 1)
 		{
+			System.out.println("1");
 			mainCharacter = new SpriteSheet("/textures/characters/Pokemon2.png", 8, 8, 32, 4);
 			Rectangle leftBounds = new Rectangle(11 * 4 + 1, 22 * 4 + 12, 1, 9 * 4 - 12);
 			Rectangle rightBounds = new Rectangle(11 * 4 + 35, 22 * 4 + 12, 1, 9 * 4 - 12);
@@ -164,7 +171,8 @@ public class Player
 			sprites.add(playerMob);
 			Judgement.playerUpdate = true;
 		}
-		else if (playerNumber == 2)
+		
+		else if (playerNumber == 2) //Condition for the crash
 		{
 			mainCharacter = new SpriteSheet("/textures/characters/mainCharacter.png", 8, 8, 32, 4);
 			
@@ -185,11 +193,15 @@ public class Player
 
 			Rectangle attackBounds = new Rectangle(0,0,0,0);
 			//playerMob.addAttack("sword", 0, 5, attackBounds, attackBounds, attackBounds, attackBounds);
+			
+			
+			//----------These blocks are where the error happens when trying to go back to the mainCharacter------------//
 			playerMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
 			playerMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
 			playerMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
 			playerMob.setCurrentAttack("sword"); //Starting attack
-			playerMob.setHealth(35); //If you change the starting max health, dont forget to change it in inGameMenu.java max health also
+			playerMob.setHealth(35);
+			 //If you change the starting max health, dont forget to change it in inGameMenu.java max health also
 			
 			 while (listIterator.hasNext()) 
 			 {
