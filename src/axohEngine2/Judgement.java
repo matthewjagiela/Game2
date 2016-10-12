@@ -3541,7 +3541,13 @@ public class Judgement extends Game {
 	        case KeyEvent.VK_I:
 	        	keyInventory = true;
 	        	break;
-	        case KeyEvent.VK_Z:
+	        	//old attacking start with z as input
+	       // case KeyEvent.VK_Z:
+	        //	keyAction = true;
+	        	//break;
+	        	
+	        	//new attacking input as space bar
+	        case KeyEvent.VK_SPACE:
 	        	keyAction = true;
 	        	break;
 	        case KeyEvent.VK_ENTER:
@@ -3550,9 +3556,11 @@ public class Judgement extends Game {
 	        case KeyEvent.VK_BACK_SPACE:
 	        	keyBack = true;
 	        	break;
-	        case KeyEvent.VK_SPACE:
-	        	keySpace = true;
-	        	break;
+	        	
+	        	//old useless fucntion that played a noise and cause cahrater to stop moving. 
+	        //case KeyEvent.VK_SPACE:
+	        	//keySpace = true;
+	        //	break;
 	        case KeyEvent.VK_Y:
 	        	keyChange = true;
 	        	break;
@@ -3604,18 +3612,25 @@ public class Judgement extends Game {
         case KeyEvent.VK_I:
 	    	keyInventory = false;
 	    	break;
-	    case KeyEvent.VK_Z:
-	    	keyAction = false;
-	    	break;
+	    	//old action for attacking with Z as input
+	  //  case KeyEvent.VK_Z:
+	   // 	keyAction = false;
+	    //	break;
 	    case KeyEvent.VK_ENTER:
 	    	keyEnter = false;
 	    	break;
 	    case KeyEvent.VK_BACK_SPACE:
 	    	keyBack = false;
 	    	break;
+	    	//An event that used to cause the character input to freeze and played a noise. 
+	   // case KeyEvent.VK_SPACE:
+	    //	keySpace = false;
+	    //	break;
+	    	//end the action for attacking with space bar as input
 	    case KeyEvent.VK_SPACE:
-	    	keySpace = false;
+	    	keyAction = false;
 	    	break;
+	    	
 	    case KeyEvent.VK_Y:
 	    	keyChange = false;
 	    	break;
