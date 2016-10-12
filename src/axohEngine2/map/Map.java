@@ -483,7 +483,7 @@ public class Map {
 		}
 		return mobs;
 	}
-	
+
 /* *** OLD WAY of rendering the map, saved just in case I need to see how something is done
 *** NEW WAY is above ***/	
 //	public void render(JFrame frame, Graphics2D g2d, int xx, int yy) {

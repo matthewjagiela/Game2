@@ -226,7 +226,7 @@ public class Judgement extends Game {
 	public static int isWindows(){ //NEW METHOD SCRUM CYCLE 1
 		if(System.getProperty("os.name").startsWith("Windows")){ //The operating system is windows and can hold a higher FPS
 			System.out.println("Windows");
-			return 110; 
+			return 60; //60FPS to make the game look good but not to cause problems on those with slower hardware 
 		}
 		else{
 			System.out.println("Mac");
@@ -413,6 +413,8 @@ public class Judgement extends Game {
 		* 
 		* 'graphics' objects have parameters that can be changed which effect what it renders, two are font and color
 		**********************************************************************/
+		
+	
 		Graphics2D g2d = graphics();
 		g2d.clearRect(0, 0, SCREENWIDTH, SCREENHEIGHT); 
 		g2d.setFont(simple);
@@ -3215,9 +3217,11 @@ public class Judgement extends Game {
 				}
 			}//end option none
 			
-			if(option == OPTION.NEWGAME)
+			if(option == OPTION.NEWGAME) //NOTE: Compare with loadGame() or option == OPTION.LOADGAME to see differences w/collision or camera....
 			{
 				//Backspace(Exit choice)
+				
+				System.out.println("New Game Option");
 				if(keyBack && !title.isGetName() && title.getFileName().length() == 0)
 				{
 					titleLocation = 0;
@@ -3321,7 +3325,7 @@ public class Judgement extends Game {
 				//	Load the currently selected file
 						currentFile = title.enter();
 						if(currentFile != "") { //File is empty
-							loadGame();
+							//loadGame(); //NOTE: If this line is nonexistant then our collision error/camera movement error doesn't occur! The errors are somewhere in this method!
 							inputWait = 10;
 							option = OPTION.NONE;
 							state = STATE.GAME;
@@ -3662,7 +3666,7 @@ public class Judgement extends Game {
 	 * 
 	 * Currently only the player x and y location and the current map is saved
 	 */
-	 void loadGame() {
+	 void loadGame() { //NOTE: This is where camera tracking and collisions get messed up (rendering with black boxes/collisions).... Best to compare with a new game(wherever that is)
 		 if(currentFile != "") 
 		 {
 			 System.out.println("Loading...");
