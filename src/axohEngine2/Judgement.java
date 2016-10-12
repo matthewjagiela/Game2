@@ -1837,6 +1837,9 @@ public class Judgement extends Game {
 		/********************************************
 		 * Special actions for In Game
 		 *******************************************/
+		
+// NOTE: here is where inventory goes wrong
+// need to check STATE.GAME
 		if(state == STATE.GAME && inputWait < 0) 
 		{
 //			//I(Inventory)
