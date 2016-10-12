@@ -15,4 +15,5 @@ public class Inventory
         g2d.fillRect(770, 100, 350, 460);
 		
 	}
+	// Is it working?
 }
