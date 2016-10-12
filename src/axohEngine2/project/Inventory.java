@@ -27,9 +27,9 @@ public class Inventory
 		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
         g2d.setColor(Color.white); 
-		g2d.translate(870, 254);
+		g2d.translate(780, 140);
 		g2d.draw(shape);
-		g2d.translate(-870, -254);
+		g2d.translate(-780, -140);
 		
 		
 		
