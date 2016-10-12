@@ -2021,7 +2021,7 @@ public class Judgement extends Game {
 //			}
 				
 			//SpaceBar(action button)
-			if(keySpace) 
+		/*	if(keySpace) 
 			{
 				try{
 				JavaAudioPlaySoundExample("/sounds/Blip_Select.wav");
@@ -2052,6 +2052,7 @@ public class Judgement extends Game {
 
 				inputWait = 20;
 			}
+			*/
 //			else
 //			{
 //				canMove = true;
