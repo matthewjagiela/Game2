@@ -1894,7 +1894,7 @@ public class Judgement extends Game {
 			
 			if(keyShift)
 			{
-				playerSpeed = 6;
+				playerSpeed = 14;
 			}
 			else
 			{
