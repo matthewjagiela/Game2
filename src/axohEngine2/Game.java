@@ -582,7 +582,7 @@ abstract class Game extends JFrame implements Runnable, KeyListener, MouseListen
 			if(spr.alive() == false) _sprites.remove(i);
 		}
 	}
-	
+
 	/*********************************************************************
 	 * @param tile - A Tile to be added in to the system
 	 * 

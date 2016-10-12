@@ -3517,27 +3517,27 @@ public class Judgement extends Game {
 	        case KeyEvent.VK_LEFT:
 	            keyLeft = true;
 	            break;
-//	        case KeyEvent.VK_A:
-//	        	keyLeft = true;
-//	        	break;
+	        case KeyEvent.VK_A:
+        	keyLeft = true;
+        	break;
 	        case KeyEvent.VK_RIGHT:
 	            keyRight = true;
 	            break;
-//	        case KeyEvent.VK_D:
-//	        	keyRight = true;
-//	        	break;
+        case KeyEvent.VK_D:
+	        	keyRight = true;
+	        	break;
 	        case KeyEvent.VK_UP:
 	            keyUp = true;
 	            break;
-//	        case KeyEvent.VK_W:
-//	        	keyUp = true;
-//	        	break;
+	        case KeyEvent.VK_W:
+	        	keyUp = true;
+	        	break;
 	        case KeyEvent.VK_DOWN:
 	            keyDown = true;
 	            break;
-//	        case KeyEvent.VK_S:
-//	        	keyDown = true;
-//	        	break;
+	        case KeyEvent.VK_S:
+	        	keyDown = true;
+	        	break;
 	        case KeyEvent.VK_I:
 	        	keyInventory = true;
 	        	break;
@@ -3580,27 +3580,27 @@ public class Judgement extends Game {
         case KeyEvent.VK_LEFT:
             keyLeft = false;
             break;
-//        case KeyEvent.VK_A:
-//        	keyLeft = false;
-//        	break;
+        case KeyEvent.VK_A:
+        	keyLeft = false;
+        	break;
         case KeyEvent.VK_RIGHT:
             keyRight = false;
             break;
-//        case KeyEvent.VK_D:
-//        	keyRight = false;
-//        	break;
+        case KeyEvent.VK_D:
+        	keyRight = false;
+        	break;
         case KeyEvent.VK_UP:
             keyUp = false;
             break;
-//        case KeyEvent.VK_W:
-//        	keyUp = false;
-//        	break;
+        case KeyEvent.VK_W:
+        	keyUp = false;
+        	break;
         case KeyEvent.VK_DOWN:
             keyDown = false;
             break;
-//        case KeyEvent.VK_S:
-//        	keyDown = false;
-//        	break;
+        case KeyEvent.VK_S:
+        	keyDown = false;
+        	break;
         case KeyEvent.VK_I:
 	    	keyInventory = false;
 	    	break;
