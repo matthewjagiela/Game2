@@ -3521,12 +3521,11 @@ public class Judgement extends Game {
 	            keyLeft = true;
 	            break;
 	        case KeyEvent.VK_A:
-        	keyLeft = true;
-        	break;
+	        	keyLeft = true;
 	        case KeyEvent.VK_RIGHT:
 	            keyRight = true;
 	            break;
-        case KeyEvent.VK_D:
+	        case KeyEvent.VK_D:
 	        	keyRight = true;
 	        	break;
 	        case KeyEvent.VK_UP:
