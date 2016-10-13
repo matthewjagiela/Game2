@@ -3560,7 +3560,7 @@ public class Judgement extends Game {
 	        	keyBack = true;
 	        	break;
 	        	
-	        	//old useless fucntion that played a noise and cause cahrater to stop moving. 
+	        	//old useless function that played a noise and cause character to stop moving. 
 	        //case KeyEvent.VK_SPACE:
 	        	//keySpace = true;
 	        //	break;
