@@ -3583,6 +3583,9 @@ public class Judgement extends Game {
 	        case KeyEvent.VK_C:
 	        	keyChat = true;
 	        	break;
+	        case KeyEvent.VK_ESCAPE:
+	        	keyEnter = true;
+	        	break;
         }
 	}
 
@@ -3622,6 +3625,8 @@ public class Judgement extends Game {
         case KeyEvent.VK_I:
 	    	keyInventory = false;
 	    	break;
+	    	
+	    	
 	    	//old action for attacking with Z as input
 	  //  case KeyEvent.VK_Z:
 	   // 	keyAction = false;
@@ -3629,10 +3634,14 @@ public class Judgement extends Game {
 	    case KeyEvent.VK_ENTER:
 	    	keyEnter = false;
 	    	break;
+	    case KeyEvent.VK_ESCAPE:
+        	keyEnter = false;
+        	break;
 	    case KeyEvent.VK_BACK_SPACE:
 	    	keyBack = false;
 	    	break;
-	    	//An event that used to cause the character input to freeze and played a noise. 
+	    	//An event that used to cause the character input to freeze and 
+	    	//played a noise. 
 	   // case KeyEvent.VK_SPACE:
 	    //	keySpace = false;
 	    //	break;
