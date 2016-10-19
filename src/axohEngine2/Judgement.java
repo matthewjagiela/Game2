@@ -1948,6 +1948,7 @@ public class Judgement extends Game {
 				}
 				if (keyAction)
 				{
+					System.out.println("Selection == " + selection);
 					if (selection == 1)
 					{
 						renderInventory = true;
@@ -1960,7 +1961,12 @@ public class Judgement extends Game {
 						
 					}
 					else if (selection == 3)
-					{
+					{ 
+						System.exit(1); //New Version: Quits the game directly to the desktop!
+						
+						
+						
+						// THE OLD QUIT - Bring you back to the main menu
 						state = STATE.TITLE;
 						option = OPTION.NONE;
 						sprites().add(titleArrow);
@@ -1975,6 +1981,7 @@ public class Judgement extends Game {
 						canMove = true;
 						canAction = true;
 						inputWait = 10;
+						//
 					}
 				}
 				if (keyCancel)
