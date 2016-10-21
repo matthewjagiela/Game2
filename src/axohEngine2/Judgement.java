@@ -62,6 +62,7 @@ import axohEngine2.project.TYPE;
 import axohEngine2.project.Textbox;
 import axohEngine2.project.TileCreator;
 import axohEngine2.project.TitleMenu;
+import axohEngine2.project.Status;
 
 //Start class by also extending the 'Game.java' engine interface
 public class Judgement extends Game {
@@ -194,6 +195,8 @@ public class Judgement extends Game {
 	
 	boolean renderInGameMenu;
 	boolean renderInventory;
+	boolean renderStatus;
+	
 	
 	// get tile you are currently intersecting (if any)
 	boolean intersectTile; // checks if you are currently intersecting with a tile or not
@@ -208,6 +211,8 @@ public class Judgement extends Game {
 	
 	int selection = 0;
 	
+	// Create instances
+	Status status = new Status();
 	Inventory inventory = new Inventory();
 	Quests quest = new Quests();
 	String[] dialogue = quest.getDialogue();
@@ -465,6 +470,12 @@ public class Judgement extends Game {
 			if (renderInventory)
 			{
 				inventory.render(this, g2d);
+			}
+			
+			// add status screen
+			if (renderStatus)
+			{
+				status.render(this, g2d);
 			}
 			
 //			Player player = new Player();
@@ -1825,6 +1836,7 @@ public class Judgement extends Game {
 	boolean canEnter = true;
 	boolean canInGameMenu = true;
 	boolean canInventory = true;
+	boolean canStatus = true;
 	
 	int xa;
 	int ya;
@@ -1949,6 +1961,17 @@ public class Judgement extends Game {
 				if (keyAction)
 				{
 					System.out.println("Selection == " + selection);
+					
+					// open status screen
+					if (selection == 0)
+					{
+						renderStatus = true;
+						canInGameMenu = false;
+						canEnter = false;
+						inputWait = 10;
+					}
+					
+					
 					if (selection == 1)
 					{
 						renderInventory = true;
@@ -1958,11 +1981,12 @@ public class Judgement extends Game {
 					}
 					if (selection == 2)
 					{
-						
+						// for saving function
 					}
 					else if (selection == 3)
 					{ 
-						System.exit(1); //New Version: Quits the game directly to the desktop!
+						System.exit(1); 
+						//New Version: Quits the game directly to the desktop!
 						
 						
 						
@@ -2000,6 +2024,20 @@ public class Judgement extends Game {
 				if (keyCancel)
 				{
 					renderInventory = false;
+					canEnter = true;
+					canInGameMenu = true;
+					
+					inputWait = 10;
+				}
+			}
+			
+			
+			// close status screen and reverse states
+			if (renderStatus && canStatus)
+			{
+				if (keyCancel)
+				{
+					renderStatus = false;
 					canEnter = true;
 					canInGameMenu = true;
 					
