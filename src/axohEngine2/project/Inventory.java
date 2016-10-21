@@ -15,6 +15,37 @@ import javax.swing.JFrame;
 
 public class Inventory 
 {
+	//-----------SCRUM CYCLE 2 NEW-------------//
+	int index;
+	int maxItem;
+	
+	public int getIndex()
+	{
+		return index;
+	}
+	
+	public void setIndex(int i)
+	{
+		index = i;
+		if(index >= maxItem){
+			index = 0;
+		}
+		
+		if(index < 0){
+			index = maxItem -1;
+		}
+	}
+	
+	public void indexDown()
+	{
+		this.setIndex(this.getIndex() + 1);
+	}
+	
+	public void indexUp()
+	{
+		this.setIndex(this.getIndex() - 1);
+	}
+	
 	public void render(JFrame frame, Graphics2D g2d)
 	{
 		//-------------USED TO GENERATE BLACK BOX BACKGROUND--------//
