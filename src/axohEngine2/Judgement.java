@@ -469,7 +469,7 @@ public class Judgement extends Game {
 			}
 			if (renderInventory)
 			{
-				inventory.render(this, g2d);
+				inventory.render(this, g2d, selection);
 			}
 			
 			// add status screen

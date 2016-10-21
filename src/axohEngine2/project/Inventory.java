@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 public class Inventory 
 {
 	//-----------SCRUM CYCLE 2 NEW-------------//
-	int index;
+	int index; 
 	int maxItem;
 	
 	public int getIndex()
@@ -46,7 +46,7 @@ public class Inventory
 		this.setIndex(this.getIndex() - 1);
 	}
 	
-	public void render(JFrame frame, Graphics2D g2d)
+	public void render(JFrame frame, Graphics2D g2d, int selection)
 	{
 		//-------------USED TO GENERATE BLACK BOX BACKGROUND--------//
 		g2d.setColor(Color.white);
@@ -89,6 +89,16 @@ public class Inventory
         	ioe.printStackTrace();
         }
 		
+		/* For selection
+		if (selection == 0)
+        {
+        	g2d.setColor(Color.yellow);
+        }
+        else
+        {
+        	g2d.setColor(Color.white);
+        }
+		*/
 		text2 = "Potion  * 1";	
 		f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
 		t1 = new TextLayout(text2, f, g2d.getFontRenderContext());
@@ -99,7 +109,16 @@ public class Inventory
 		g2d.draw(shape);
 		g2d.fill(shape); //Fill the outline so it is readable
 		g2d.translate(-840, -180);
-		
+		/* For Selection
+		if (selection == 1)
+        {
+        	g2d.setColor(Color.yellow);
+        }
+        else
+        {
+        	g2d.setColor(Color.white);
+        }
+		*/
 		text3 = "-----------Press X to exit-----------";	
 		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 30
 		t1 = new TextLayout(text3, f, g2d.getFontRenderContext());
