@@ -16,6 +16,9 @@ import javax.swing.JFrame;
 public class Inventory 
 {
 	//-----------SCRUM CYCLE 2 NEW-------------//
+	//Create count for items
+	//int countItemPotion;
+	//int countItemBombs;
 	int index; 
 	int maxItem;
 	
@@ -71,7 +74,7 @@ public class Inventory
         } catch (IOException ioe) {
         	ioe.printStackTrace();
         }
-        text1 = "Bomb   * 1";	
+        text1 = "Bomb   * 1"; // + countItemBomb will change the text from 1 to the int count
 		f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
 		t1 = new TextLayout(text1, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
@@ -99,7 +102,7 @@ public class Inventory
         	g2d.setColor(Color.white);
         }
 		*/
-		text2 = "Potion  * 1";	
+		text2 = "Potion  * 1"; //+ countItemPotion; // change text to add the int count	
 		f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
 		t1 = new TextLayout(text2, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
