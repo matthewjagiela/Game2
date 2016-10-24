@@ -16,11 +16,19 @@ import javax.swing.JFrame;
 public class Inventory 
 {
 	//-----------SCRUM CYCLE 2 NEW-------------//
-	//Create count for items
-	//int countItemPotion;
-	//int countItemBombs;
-	int index; 
-	int maxItem;
+	// index == selection == position of the oval 
+	// maxItemType == the total kinds of items the character have for now
+	// count == the counter for each certain type of item
+	int index;
+	int maxItemType;
+	int count;
+	
+	String text1;
+    String text2;
+    String text3;
+    Font f;
+    TextLayout t1;
+    Shape shape;
 	
 	public int getIndex()
 	{
@@ -30,13 +38,19 @@ public class Inventory
 	public void setIndex(int i)
 	{
 		index = i;
-		if(index >= maxItem){
+		if(index >= maxItemType){
 			index = 0;
 		}
 		
 		if(index < 0){
-			index = maxItem -1;
+			index = maxItemType -1;
 		}
+	}
+	
+	public Inventory (int i, int mi)
+	{
+		index = i;
+		maxItemType = mi;
 	}
 	
 	public void indexDown()
@@ -49,7 +63,7 @@ public class Inventory
 		this.setIndex(this.getIndex() - 1);
 	}
 	
-	public void render(JFrame frame, Graphics2D g2d, int selection)
+	public void render(JFrame frame, Graphics2D g2d)
 	{
 		//-------------USED TO GENERATE BLACK BOX BACKGROUND--------//
 		g2d.setColor(Color.white);
@@ -57,80 +71,70 @@ public class Inventory
         g2d.setColor(Color.black);  
         g2d.fillRect(770, 100, 350, 460);
         
-        String text1;
-        String text2;
-        String text3;
-        Font f;
-        TextLayout t1;
-        Shape shape;
-        //-----------SCRUM CYCLE 1 NEW-------------//
+       //-----------SCRUM CYCLE 2 NEW-------------//
+        int x = 780;
+		int y = 120 + this.index * 40;
+		g2d.setColor(Color.yellow);
+		g2d.fillOval(x, y, 24, 24);
         
-        // read pic for item from ./res/textures/items/, 
-     	// not sure if the directory works right on everyone's eclipse
-     	// we can try
-        try {
-        	BufferedImage img_bomb = ImageIO.read(new File("./res/textures/items/bomb.png"));
-        	g2d.drawImage(img_bomb, 780, 110, 40, 40, null);
-        } catch (IOException ioe) {
-        	ioe.printStackTrace();
-        }
-        text1 = "Bomb   * 1"; // + countItemBomb will change the text from 1 to the int count
-		f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
-		t1 = new TextLayout(text1, f, g2d.getFontRenderContext());
-		shape = t1.getOutline(null);
-        g2d.setColor(Color.white); 
-        g2d.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));//Keep at one to render properly
-		g2d.translate(840, 140);
-		g2d.draw(shape);
-		g2d.fill(shape); //Fill the outline so it is readable
-		g2d.translate(-840, -140);
-		
-		try {
-        	BufferedImage img_bomb = ImageIO.read(new File("./res/textures/items/potion.png"));
-        	g2d.drawImage(img_bomb, 780, 150, 40, 40, null);
-        } catch (IOException ioe) {
-        	ioe.printStackTrace();
-        }
-		
-		/* For selection
-		if (selection == 0)
-        {
-        	g2d.setColor(Color.yellow);
-        }
-        else
-        {
-        	g2d.setColor(Color.white);
-        }
-		*/
-		text2 = "Potion  * 1"; //+ countItemPotion; // change text to add the int count	
-		f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
-		t1 = new TextLayout(text2, f, g2d.getFontRenderContext());
-		shape = t1.getOutline(null);
-        g2d.setColor(Color.white); 
-        g2d.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));//Keep at one to render properly
-		g2d.translate(840, 180);
-		g2d.draw(shape);
-		g2d.fill(shape); //Fill the outline so it is readable
-		g2d.translate(-840, -180);
-		/* For Selection
-		if (selection == 1)
-        {
-        	g2d.setColor(Color.yellow);
-        }
-        else
-        {
-        	g2d.setColor(Color.white);
-        }
-		*/
+        count = 1;
+        f = new Font("Helvetica", Font.PLAIN, 30);
+        
+        text1 = "Bomb   * " + count;
+        showIcon("./res/textures/items/bomb.png", 810, 110, 40, 40, g2d);
+        printString(text1, 870, 140, g2d);
+        setStringColor(text1, 0, 870, 140, g2d);
+        
+        text2 = "Potion  * " + count;
+        showIcon("./res/textures/items/potion.png", 810, 150, 40, 40, g2d);
+        printString(text2, 870, 180, g2d);
+        setStringColor(text2, 1, 870, 180, g2d);
+        
 		text3 = "-----------Press X to exit-----------";	
-		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 30
-		t1 = new TextLayout(text3, f, g2d.getFontRenderContext());
+		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 25
+		printString(text3, 772, 550, g2d);
+	}
+	
+	// print new info onto the rectangle
+	private void printString(String text, int axis_x, int axis_y, Graphics2D g2d)
+	{
+		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
-        g2d.setColor(Color.white); 
-        g2d.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));//Keep at one to render properly
-		g2d.translate(772, 550);
+	    g2d.setColor(Color.white); 
+	    g2d.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));//Keep at one to render properly
+	    g2d.translate(axis_x, axis_y);
 		g2d.draw(shape);
 		g2d.fill(shape); //Fill the outline so it is readable
-		g2d.translate(-772, -550);
+		g2d.translate(-axis_x, -axis_y);
+	}
+		
+	// print icons onto the rectangle
+	private void showIcon(String filename, int axis_x, int axis_y, int width, int length, Graphics2D g2d)
+	{
+		try 
+		{
+	        BufferedImage img = ImageIO.read(new File(filename));
+	        g2d.drawImage(img, axis_x, axis_y, width, length, null);
+	        } catch (IOException ioe) {
+	        	ioe.printStackTrace();
+	        }
+	}
+	
+	private void setStringColor(String text, int i, int axis_x, int axis_y, Graphics2D g2d)
+	{
+		if (this.index == i) 
+        {
+        	g2d.setColor(Color.yellow);
+        }
+        else
+        {
+        	g2d.setColor(Color.white);
+        }
+		
+		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
+		shape = t1.getOutline(null);
+		g2d.translate(axis_x, axis_y);
+		g2d.fill(shape);
+		g2d.translate(-axis_x, -axis_y);
 	}
 }

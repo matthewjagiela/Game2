@@ -214,7 +214,7 @@ public class Judgement extends Game {
 	
 	// Create instances
 	Status status = new Status();
-	Inventory inventory = new Inventory();
+	Inventory inventory = new Inventory(0, 2);
 	Quests quest = new Quests();
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	String[] dialogue = quest.getDialogue();
@@ -471,7 +471,7 @@ public class Judgement extends Game {
 			}
 			if (renderInventory)
 			{
-				inventory.render(this, g2d, selection);
+				inventory.render(this, g2d);
 			}
 			
 			// add status screen
@@ -1939,6 +1939,22 @@ public class Judgement extends Game {
 						playerMob.stopAnim();
 					}
 						inputWait = 10;
+				}
+			}
+			
+			// ------------SCRUM CYCLE 2 NEW-----------
+			// Inventory items selectable
+			if (renderInventory && !canInGameMenu)
+			{
+				if(keyUp)
+				{
+					inventory.indexUp();
+					inputWait = 10;
+				}
+				if(keyDown)
+				{
+					inventory.indexDown();
+					inputWait = 10;
 				}
 			}
 			
