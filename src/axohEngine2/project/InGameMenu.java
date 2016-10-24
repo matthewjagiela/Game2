@@ -223,14 +223,16 @@ public class InGameMenu {
 	public void render(JFrame frame, Graphics2D g2d, int selection) 
 	{
 		g2d.setColor(Color.white);
-		g2d.drawRect(800, 186, 300, 260);  
+		g2d.drawRect(800, 186, 300, 310);  
         g2d.setColor(Color.black);  
-        g2d.fillRect(800, 186, 300, 260);
+        g2d.fillRect(800, 186, 300, 310);
         
         String text;
         Font f;
         TextLayout t1;
         Shape shape;
+        
+        
         
         text = "Stats";	
 		f = new Font("Helvetica", Font.PLAIN, 42);
@@ -241,6 +243,7 @@ public class InGameMenu {
 		g2d.translate(870, 254);
 		g2d.draw(shape);
 		g2d.translate(-870, -254);
+		
 		
 		if (selection == 0)
         {
@@ -319,6 +322,28 @@ public class InGameMenu {
 		g2d.translate(870, 404);
 		g2d.fill(shape);
 		g2d.translate(-870, -404);
+		//Tutorial Screen"
+		text = "Help";	
+		f = new Font("Helvetica", Font.PLAIN, 42);
+		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
+		shape = t1.getOutline(null);
+		g2d.setColor(Color.black);
+		g2d.setStroke(new BasicStroke(4, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+		g2d.translate(870, 454);
+		g2d.draw(shape);
+		g2d.translate(-870, -454);
+		
+		if (selection == 4)
+        {
+        	g2d.setColor(Color.yellow);
+        }
+        else
+        {
+        	g2d.setColor(Color.white);
+        }
+		g2d.translate(870, 454);
+		g2d.fill(shape);
+		g2d.translate(-870, -454);
 		
 		int x;
 		int y;
@@ -354,13 +379,22 @@ public class InGameMenu {
 			g2d.setColor(Color.yellow);
 			g2d.fillOval(x,y,r,r);
 		}
-		else
+		else if (selection == 3)
 		{
 			x = 840;
 			y = 388;
 			r = 24;
 			x = x-(r/2);
 			y = y-(r/2);
+			g2d.setColor(Color.yellow);
+			g2d.fillOval(x,y,r,r);
+		}
+		else{ //Tutorial screen have the yellow dot move to "Help"
+			x = 840;
+			y = 438;
+			r = 24;
+			x = x-(r/2);
+			y = y - (r/2);
 			g2d.setColor(Color.yellow);
 			g2d.fillOval(x,y,r,r);
 		}

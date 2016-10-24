@@ -196,6 +196,7 @@ public class Judgement extends Game {
 	boolean renderInGameMenu;
 	boolean renderInventory;
 	boolean renderStatus;
+	boolean renderHelp;
 	
 	
 	// get tile you are currently intersecting (if any)
@@ -215,6 +216,7 @@ public class Judgement extends Game {
 	Status status = new Status();
 	Inventory inventory = new Inventory();
 	Quests quest = new Quests();
+	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	String[] dialogue = quest.getDialogue();
 	private int dialogueTracker = -1;
 	private int dialogueWait = 0;
@@ -477,7 +479,9 @@ public class Judgement extends Game {
 			{
 				status.render(this, g2d);
 			}
-			
+			if(renderHelp){
+				tutorial.render(this, g2d);
+			}
 //			Player player = new Player();
 //			npcMob = player.getPlayerMobStart(mainCharacter, npcMob, graphics(), this, sprites(), playerNumber);
 //			npcMob.renderMob(100,100);
@@ -1952,7 +1956,7 @@ public class Judgement extends Game {
 				if (keyDown)
 				{
 					selection++;
-					if (selection > 3)
+					if (selection > 4)
 					{
 						selection = 0;
 					}
@@ -1982,6 +1986,9 @@ public class Judgement extends Game {
 					if (selection == 2)
 					{
 						// for saving function
+					}
+					if(selection == 4){
+						renderHelp = true;
 					}
 					else if (selection == 3)
 					{ 
@@ -3303,6 +3310,8 @@ public class Judgement extends Game {
 					save.newFile(title.getFileName());
 					title.setGetName(false);
 					currentFile = title.getFileName();
+					
+					
 					state = STATE.GAME;
 					option = OPTION.NONE;
 					inputWait = 10;
