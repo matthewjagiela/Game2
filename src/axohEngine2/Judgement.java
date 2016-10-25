@@ -196,7 +196,9 @@ public class Judgement extends Game {
 	boolean renderInGameMenu;
 	boolean renderInventory;
 	boolean renderStatus;
-	boolean renderHelp;
+	boolean renderTutorial;
+	
+	
 	
 	
 	// get tile you are currently intersecting (if any)
@@ -479,7 +481,7 @@ public class Judgement extends Game {
 			{
 				status.render(this, g2d);
 			}
-			if(renderHelp){
+			if (renderTutorial){
 				tutorial.render(this, g2d);
 			}
 //			Player player = new Player();
@@ -677,6 +679,8 @@ public class Judgement extends Game {
 				}	
 			} //end warp
 			//Item exchange event
+			
+			// add item to inventory?
 			if(spr.spriteType() == TYPE.PLAYER && tile.event().getEventType() == TYPE.ITEM && keyAction){
 				if((tile._name).equals("chest")) tile.setFrame(tile.getSpriteNumber() + 1); //Chests should have opened and closed version next to each other
 				inMenu.addItem(tile.event().getItem()); //Add item to inventory
@@ -1841,6 +1845,7 @@ public class Judgement extends Game {
 	boolean canInGameMenu = true;
 	boolean canInventory = true;
 	boolean canStatus = true;
+	boolean canTutorial = true;
 	
 	int xa;
 	int ya;
@@ -2003,10 +2008,12 @@ public class Judgement extends Game {
 					{
 						// for saving function
 					}
-					if(selection == 4){
-						renderHelp = true;
+					
+					if(selection == 3){
+						renderTutorial = true;
 					}
-					else if (selection == 3)
+					
+					else if (selection == 4)
 					{ 
 						System.exit(1); 
 						//New Version: Quits the game directly to the desktop!
@@ -2061,6 +2068,18 @@ public class Judgement extends Game {
 				if (keyCancel)
 				{
 					renderStatus = false;
+					canEnter = true;
+					canInGameMenu = true;
+					
+					inputWait = 10;
+				}
+			}
+			
+			if (renderTutorial && canTutorial)
+			{
+				if (keyCancel)
+				{
+					renderTutorial = false;
 					canEnter = true;
 					canInGameMenu = true;
 					
