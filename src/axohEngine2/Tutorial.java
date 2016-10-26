@@ -35,7 +35,7 @@ public class Tutorial {
 		Shape shape;
 		
 		try{
-			BufferedImage img = ImageIO.read(new File("./res/tutorials/keys/Tutorial Screen.png"));
+			BufferedImage img = ImageIO.read(new File("./res/tutorials/keys/Menu.png"));
 			g2d.drawImage(img, 0,0,1200,650, null);
 					
 		}
