@@ -24,14 +24,23 @@ public class Tutorial {
 
 	public void render(JFrame frame, Graphics2D g2d){
 		g2d.setColor(Color.white);
-		g2d.drawRect(770,100,1200,700);
+		g2d.drawRect(0,0,1200,700);
 		g2d.setColor(Color.black);
-		g2d.fillRect(770,100,1200,700);
+		g2d.fillRect(0,0,1200,700);
 		
 		String movementKeys;
 		String actionKeys;
 		Font f;
 		TextLayout t1;
 		Shape shape;
+		
+		try{
+			BufferedImage img = ImageIO.read(new File("./res/tutorials/keys/Tutorial Screen.png"));
+			g2d.drawImage(img, 0,0,1200,650, null);
+					
+		}
+		catch (IOException ioe){
+			System.out.println("Image Error");
+		}
 	}
 }
