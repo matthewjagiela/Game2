@@ -1845,11 +1845,7 @@ public class Judgement extends Game {
 	boolean canInGameMenu = true;
 	boolean canInventory = true;
 	boolean canStatus = true;
-<<<<<<< Updated upstream
 	boolean canTutorial = true;
-=======
-	boolean canHelp = true;
->>>>>>> Stashed changes
 	
 	int xa;
 	int ya;
@@ -2012,17 +2008,9 @@ public class Judgement extends Game {
 					{
 						// for saving function
 					}
-<<<<<<< Updated upstream
 					
 					if(selection == 3){
 						renderTutorial = true;
-=======
-					if(selection == 4){
-						renderHelp = true;
-						canInGameMenu = false;
-						canEnter = false;
-						inputWait = 10;
->>>>>>> Stashed changes
 					}
 					
 					else if (selection == 4)
@@ -2086,7 +2074,6 @@ public class Judgement extends Game {
 					inputWait = 10;
 				}
 			}
-<<<<<<< Updated upstream
 			
 			if (renderTutorial && canTutorial)
 			{
@@ -2100,16 +2087,6 @@ public class Judgement extends Game {
 				}
 			}
 			
-=======
-			if(renderHelp && canHelp){
-				if(keyCancel){
-					renderHelp = false;
-					canEnter = true;
-					canInGameMenu = true;
-					inputWait = 10;
-				}
-			}
->>>>>>> Stashed changes
 			if (keyChat) {
 				if (dialogueWait <= 0) {
 					if (dialogueTracker <= 71) {
