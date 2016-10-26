@@ -33,5 +33,14 @@ public class Tutorial {
 		Font f;
 		TextLayout t1;
 		Shape shape;
+		
+		try{
+			BufferedImage img = ImageIO.read(new File("./res/tutorials/keys/Tutorial Screen.png"));
+			g2d.drawImage(img, 0,0,1200,650, null);
+					
+		}
+		catch (IOException ioe){
+			System.out.println("Image Error");
+		}
 	}
 }
