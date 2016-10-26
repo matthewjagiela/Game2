@@ -346,6 +346,12 @@ public class MapDatabase
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, true,
 					hurtBox);
 		newMob.setMaxHealth(5);
+		newMob.addAttack("sword", 2, attackBounds, attackBounds, attackBounds, attackBounds);
+		newMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
+		newMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
+		newMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
+		newMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
+				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
 		newMob.stopAnim(); // stops the moving in place right when player loads
 		newMob.setAnimTo(npcMob.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
 		newMob.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));

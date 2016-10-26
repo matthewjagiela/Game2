@@ -39,6 +39,7 @@ public class Items extends Sprite{
 	//Strings for the names of items and status's they can cure or change
 	private String status;
 	private String _name;
+	private Item AttackItem;
 	
 	/************************************************************************
 	 * Constructor
@@ -84,6 +85,10 @@ public class Items extends Sprite{
 		damage = damageAmount;
 		status = statusAilment;
 		attackItem = true;
+	}
+	
+	public Object getAttackItem() {
+		return AttackItem;
 	}
 	
 	//Same as setHealItem but for key items - currently only changes a boolean for checks

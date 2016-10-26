@@ -32,9 +32,12 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+
+
 import axohEngine2.entities.ImageEntity;
 
 public class InGameMenu {
+
 
 	/**************
 	 * Variables
@@ -170,6 +173,7 @@ public class InGameMenu {
 	 * @param item - Item type to be added to the backpack
 	 *************************************************************/
 	public void addItem(Items item) {
+		
 		items.add(item);
 		countItems();
 		setItems();

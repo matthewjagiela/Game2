@@ -14,6 +14,8 @@ public class TileEvent
 	String name;
 	private LinkedList<Item> itemsGiven;
 	private LinkedList<DIRECTION> direction;
+	private Object bomb; 
+	private Object potion;
 	
 	// No Event
 	public TileEvent()
@@ -32,9 +34,25 @@ public class TileEvent
 		}
 	}
 	
+	
 	public String getName() { return name; }
 	public LinkedList<Item> getItemsGiven() { return itemsGiven; }
 	public LinkedList<DIRECTION> getDirection() { return direction; }
-	
+
+	public Object getBomb() {
+		return bomb;
+	}
+
+	public void setBomb(Object bomb) {
+		this.bomb = bomb;
+	}
+
+	public Object getPotion() {
+		return potion;
+	}
+
+	public void setPotion(Object potion) {
+		this.potion = potion;
+	}
 	
 }

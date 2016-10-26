@@ -54,6 +54,7 @@ public class TileCreator
 				location = new Rectangle(0 * scale, 0 * scale, 16 * scale, 16 * scale);
 				solidBounds = new Rectangle(1 * scale, 2 * scale, 14 * scale - 1, 14 * scale);		
 				LinkedList<Item> itemsGiven = new LinkedList<Item>();
+				//itemsGiven.add(Item.AttackItem);
 				LinkedList<DIRECTION> direction = new LinkedList<DIRECTION>();
 				direction.add(DIRECTION.UP);
 				eventType = new TileEvent("Chest", itemsGiven, direction);

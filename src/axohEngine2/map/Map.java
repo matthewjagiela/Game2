@@ -103,7 +103,7 @@ public class Map {
 	 * x + y * width
 	 * 
 	 * @param frame - The JFrame which the map will be rendered in (The window)
-	 * @param g2d - The Graphics2D object wich is used to display images
+	 * @param g2d - The Graphics2D object which is used to display images
 	 * @param xx - An offset in the x direction which moves the map around
 	 * @param yy - An offset in the y direction which moves the map around.
 	 * 

@@ -3342,6 +3342,7 @@ public class Judgement extends Game {
 						JavaAudioPlaySoundExample("/sounds/Blip_Select.wav");}
 						catch (Exception ex) {}
 					
+				
 					save.newFile(title.getFileName());
 					title.setGetName(false);
 					currentFile = title.getFileName();
@@ -3354,7 +3355,7 @@ public class Judgement extends Game {
 				}
 					
 					
-				//end get name
+			//end get name
 			}
 			
 			if (option == OPTION.LOADGAME)
@@ -3456,8 +3457,8 @@ public class Judgement extends Game {
 				}
 	
 			}
-			
-		}//end title state
+		}	
+		//end title state
 		
 		
 		/******************************************
