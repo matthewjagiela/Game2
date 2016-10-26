@@ -196,9 +196,7 @@ public class Judgement extends Game {
 	boolean renderInGameMenu;
 	boolean renderInventory;
 	boolean renderStatus;
-	boolean renderTutorial;
-	
-	
+	boolean renderHelp;
 	
 	
 	// get tile you are currently intersecting (if any)
@@ -481,7 +479,7 @@ public class Judgement extends Game {
 			{
 				status.render(this, g2d);
 			}
-			if (renderTutorial){
+			if(renderHelp){
 				tutorial.render(this, g2d);
 			}
 //			Player player = new Player();
@@ -679,8 +677,6 @@ public class Judgement extends Game {
 				}	
 			} //end warp
 			//Item exchange event
-			
-			// add item to inventory?
 			if(spr.spriteType() == TYPE.PLAYER && tile.event().getEventType() == TYPE.ITEM && keyAction){
 				if((tile._name).equals("chest")) tile.setFrame(tile.getSpriteNumber() + 1); //Chests should have opened and closed version next to each other
 				inMenu.addItem(tile.event().getItem()); //Add item to inventory
@@ -1845,11 +1841,14 @@ public class Judgement extends Game {
 	boolean canInGameMenu = true;
 	boolean canInventory = true;
 	boolean canStatus = true;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	boolean canTutorial = true;
 =======
 	boolean canHelp = true;
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of fe442d1... Tutorial screen can be closed with X
 	
 	int xa;
 	int ya;
@@ -2012,6 +2011,7 @@ public class Judgement extends Game {
 					{
 						// for saving function
 					}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 					
 					if(selection == 3){
@@ -2023,9 +2023,12 @@ public class Judgement extends Game {
 						canEnter = false;
 						inputWait = 10;
 >>>>>>> Stashed changes
+=======
+					if(selection == 4){
+						renderHelp = true;
+>>>>>>> parent of fe442d1... Tutorial screen can be closed with X
 					}
-					
-					else if (selection == 4)
+					else if (selection == 3)
 					{ 
 						System.exit(1); 
 						//New Version: Quits the game directly to the desktop!
@@ -2088,6 +2091,7 @@ public class Judgement extends Game {
 			}
 <<<<<<< Updated upstream
 			
+<<<<<<< HEAD
 			if (renderTutorial && canTutorial)
 			{
 				if (keyCancel)
@@ -2110,6 +2114,8 @@ public class Judgement extends Game {
 				}
 			}
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of fe442d1... Tutorial screen can be closed with X
 			if (keyChat) {
 				if (dialogueWait <= 0) {
 					if (dialogueTracker <= 71) {

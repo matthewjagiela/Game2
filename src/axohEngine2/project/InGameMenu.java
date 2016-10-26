@@ -301,8 +301,7 @@ public class InGameMenu {
 		g2d.fill(shape);
 		g2d.translate(-870, -354);
         
-		//Tutorial Screen"
-		text = "Help";	
+        text = "Quit";	
 		f = new Font("Helvetica", Font.PLAIN, 42);
 		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
@@ -323,8 +322,8 @@ public class InGameMenu {
 		g2d.translate(870, 404);
 		g2d.fill(shape);
 		g2d.translate(-870, -404);
-		
-		text = "Quit";	
+		//Tutorial Screen"
+		text = "Help";	
 		f = new Font("Helvetica", Font.PLAIN, 42);
 		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
@@ -390,7 +389,6 @@ public class InGameMenu {
 			g2d.setColor(Color.yellow);
 			g2d.fillOval(x,y,r,r);
 		}
-		
 		else{ //Tutorial screen have the yellow dot move to "Help"
 			x = 840;
 			y = 438;
