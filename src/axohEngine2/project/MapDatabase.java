@@ -308,7 +308,7 @@ public class MapDatabase
 		LinkedList<Rectangle> attackBounds = new LinkedList<Rectangle>();
 		//npcMob.setHealth(5);
 		npcMob.setMaxHealth(20);
-		npcMob.addAttack("sword", 2, attackBounds, attackBounds, attackBounds, attackBounds);
+		npcMob.addAttack("sword", 1, attackBounds, attackBounds, attackBounds, attackBounds);
 		//npcMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
 		//npcMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
 		//npcMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
