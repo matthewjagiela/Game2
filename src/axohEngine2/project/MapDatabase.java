@@ -307,12 +307,12 @@ public class MapDatabase
 		
 		LinkedList<Rectangle> attackBounds = new LinkedList<Rectangle>();
 		//npcMob.setHealth(5);
-		npcMob.setMaxHealth(5);
+		npcMob.setMaxHealth(20);
 		npcMob.addAttack("sword", 2, attackBounds, attackBounds, attackBounds, attackBounds);
-		npcMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
-		npcMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
-		npcMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
-		Tile tile = cityTiles[npcMob.getCurrentTile().x + npcMob.getCurrentTile().y * 40];
+		//npcMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
+		//npcMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
+		//npcMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
+		Tile tile = cityTiles[npcMob.getCurrentTile().x + npcMob.getCurrentTile().y+40];
 		Rectangle tileBounds = new Rectangle(tile.getLocation().x, tile.getLocation().y, 64, 64);  
 		npcMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
 				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
@@ -369,16 +369,17 @@ public class MapDatabase
 		 blakeMob.setAnimTo(blakeMob.getStartFrame());
 		 mobs.add(blakeMob);
 		 
-		 
+		 //When interacted with brings up a text box
 		 currentTile = new Point(32, 20);
 		 Mob duncanMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "test4", 40, bounds, leftBounds, rightBounds,
 					upBounds, downBounds, boundsLocation,
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, false,
 					hurtBox);
-		 duncanMob.setMaxHealth(930);
+		 duncanMob.setMaxHealth(50);
 		 duncanMob.stopAnim();
 		 duncanMob.setAnimTo(duncanMob.getStartFrame());
 		 mobs.add(duncanMob);
+		// if(maxhelth > current)
 		 
 		 
 		 currentTile = new Point(34, 20);

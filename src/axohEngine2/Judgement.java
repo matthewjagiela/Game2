@@ -71,6 +71,7 @@ public class Judgement extends Game {
 	//Hi
 	/****************** Variables **********************/
 	//--------- Screen ---------
+	
 	//SCREENWIDTH - Game window width
 	//SCREENHEIGHT - Game window height
 	//CENTERX/CENTERY - Center of the game window's x/y
@@ -3283,6 +3284,7 @@ public class Judgement extends Game {
 							JavaAudioPlaySoundExample("/sounds/Blip_Select.wav");}
 							catch (Exception ex) {}
 						
+						renderTutorial = true; //On a new game this will cause the tutorial screen to be rendered.
 						option = OPTION.NEWGAME;
 						titleLocation = 0;
 						inputWait = 10;

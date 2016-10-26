@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 public class Tutorial {
 
 	public void render(JFrame frame, Graphics2D g2d){
+		//Black Box Background
 		g2d.setColor(Color.white);
 		g2d.drawRect(770,100,1200,700);
 		g2d.setColor(Color.black);
@@ -33,10 +34,10 @@ public class Tutorial {
 		Font f;
 		TextLayout t1;
 		Shape shape;
-		
+		//Get and display the image
 		try{
 			BufferedImage img = ImageIO.read(new File("./res/tutorials/keys/Menu.png"));
-			g2d.drawImage(img, 0,0,1200,650, null);
+			g2d.drawImage(img, 0,0,frame.getWidth(),frame.getHeight(), null); //Used to fill the entire frame with the image.
 					
 		}
 		catch (IOException ioe){
