@@ -362,8 +362,8 @@ public class MapDatabase
 		 currentTile = new Point(30, 20);
 		 Mob blakeMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "test3", 56, bounds, leftBounds, rightBounds,
 					upBounds, downBounds, boundsLocation,
-					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, true,
-					hurtBox);
+					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, false,
+					hurtBox); // changed it from false to true so it can't get attacked
 		 blakeMob.setMaxHealth(800);
 		 blakeMob.stopAnim();
 		 blakeMob.setAnimTo(blakeMob.getStartFrame());
