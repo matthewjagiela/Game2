@@ -298,33 +298,33 @@ public class MapDatabase
 		Rectangle hurtBox = new Rectangle(8 * 4, 21 * 4 - 20, 14 * 4, 10 * 4 + 20); 
 		
 		
-		Mob npcMob = new Mob(frame, g2d, evil, 40, TYPE.NPC, "test", 56, bounds, leftBounds, rightBounds,
+		Mob FredNPC = new Mob(frame, g2d, evil, 40, TYPE.NPC, "test", 56, bounds, leftBounds, rightBounds,
 				upBounds, downBounds, boundsLocation,
 				currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, true,
 				hurtBox);
 		
-		npcMob.setMoveAnim(32, 48, 40, 56, 3, 8);
+		FredNPC.setMoveAnim(32, 48, 40, 56, 3, 8);
 		
 		LinkedList<Rectangle> attackBounds = new LinkedList<Rectangle>();
-		//npcMob.setHealth(5);
-		npcMob.setMaxHealth(20);
-		npcMob.addAttack("sword", 1, attackBounds, attackBounds, attackBounds, attackBounds);
-		//npcMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
-		//npcMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
-		//npcMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
-		Tile tile = cityTiles[npcMob.getCurrentTile().x + npcMob.getCurrentTile().y+40];
+		//FredNPC.setHealth(5);
+		FredNPC.setMaxHealth(20);
+		FredNPC.addAttack("sword", 1, attackBounds, attackBounds, attackBounds, attackBounds);
+		//FredNPC.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
+		//FredNPC.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
+		//FredNPC.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
+		Tile tile = cityTiles[FredNPC.getCurrentTile().x + FredNPC.getCurrentTile().y+40];
 		Rectangle tileBounds = new Rectangle(tile.getLocation().x, tile.getLocation().y, 64, 64);  
-		npcMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
+		FredNPC.getAttack("sword").setAttackBoundsLocation(new Rectangle(
 				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
 		//playerMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(startPosX + bounds.x, startPosY + bounds.y, bounds.width, bounds.height));
-		npcMob.setCurrentAttack("sword"); //Starting attack
-		npcMob.stopAnim(); // stops the moving in place right when player loads
-		npcMob.setAnimTo(npcMob.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
-		npcMob.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
+		FredNPC.setCurrentAttack("sword"); //Starting attack
+		FredNPC.stopAnim(); // stops the moving in place right when player loads
+		FredNPC.setAnimTo(FredNPC.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
+		FredNPC.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
 		
-		npcMob.setRI(RI.Attack);
+		FredNPC.setRI(RI.Attack);
 		
-		mobs.add(npcMob);
+		mobs.add(FredNPC);
 		
 		 bounds = new Rectangle(8 * 4, 22 * 4, 14 * 4, 9 * 4 + 6);
 		 leftBounds = new Rectangle(11 * 4 + 1, 22 * 4 + 12, 1, 9 * 4 - 12);
@@ -353,7 +353,7 @@ public class MapDatabase
 		newMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
 				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
 		newMob.stopAnim(); // stops the moving in place right when player loads
-		newMob.setAnimTo(npcMob.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
+		newMob.setAnimTo(FredNPC.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
 		newMob.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
 		
 		 mobs.add(newMob);
