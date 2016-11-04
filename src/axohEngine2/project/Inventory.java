@@ -26,6 +26,7 @@ public class Inventory
 	String text1;
     String text2;
     String text3;
+    String textExit;
     Font f;
     TextLayout t1;
     Shape shape;
@@ -80,19 +81,53 @@ public class Inventory
         count = 1;
         f = new Font("Helvetica", Font.PLAIN, 30);
         
-        text1 = "Bomb   * " + count;
+        text1 = "Bomb   *            " + count;
         showIcon("./res/textures/items/bomb.png", 810, 110, 40, 40, g2d);
         printString(text1, 870, 140, g2d);
         setStringColor(text1, 0, 870, 140, g2d);
         
-        text2 = "Potion  * " + count;
+        text2 = "Potion  *            " + count;
         showIcon("./res/textures/items/potion.png", 810, 150, 40, 40, g2d);
         printString(text2, 870, 180, g2d);
         setStringColor(text2, 1, 870, 180, g2d);
         
-		text3 = "-----------Press X to exit-----------";	
+        text3 = "Sword  *            " + count;
+        showIcon("./res/textures/items/sword.png", 810, 190, 40, 40, g2d);
+        printString(text3, 870, 220, g2d);
+        setStringColor(text3, 2, 870, 220, g2d);
+        
+        
+        
+		textExit = "-----------Press X to exit-----------";	
 		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 25
-		printString(text3, 772, 550, g2d);
+		printString(textExit, 772, 550, g2d);
+		
+		// for description card
+		g2d.setColor(Color.white);
+		g2d.drawRect(550, 100, 200, 200);  
+        g2d.setColor(Color.black);  
+        g2d.fillRect(550, 100, 200, 200);
+        
+        if (this.index == 0)
+        {
+        	showIcon("./res/textures/items/bomb.png", 560, 110, 40, 40, g2d);
+        	printString("Bomb", 620, 140, g2d);
+        	printString("HP - 7", 560, 180, g2d);
+        }
+        else if (this.index == 1)
+        {
+        	showIcon("./res/textures/items/potion.png", 560, 110, 40, 40, g2d);
+        	printString("Potion", 620, 140, g2d);
+        	printString("HP + 30", 560, 180, g2d);
+        }
+        
+        else
+        {
+        	showIcon("./res/textures/items/sword.png", 560, 110, 40, 40, g2d);
+        	printString("Sword", 620, 140, g2d);
+        	printString("Attack + 10", 560, 180, g2d);
+        }
+		
 	}
 	
 	// print new info onto the rectangle

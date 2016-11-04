@@ -217,7 +217,7 @@ public class Judgement extends Game {
 	
 	// Create instances
 	Status status = new Status();
-	Inventory inventory = new Inventory(0, 2);
+	Inventory inventory = new Inventory(0, 3);
 	Quests quest = new Quests();
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	String[] dialogue = quest.getDialogue();
@@ -1956,11 +1956,13 @@ public class Judgement extends Game {
 				{
 					inventory.indexUp();
 					inputWait = 10;
+					System.out.println(inventory.getIndex());
 				}
 				if(keyDown)
 				{
 					inventory.indexDown();
 					inputWait = 10;
+					System.out.println(inventory.getIndex());
 				}
 			}
 			
