@@ -102,6 +102,7 @@ public class Inventory
 		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 25
 		printString(textExit, 772, 550, g2d);
 		
+		//-----------SCRUM CYCLE 3 NEW-------------//
 		// for description card
 		g2d.setColor(Color.white);
 		g2d.drawRect(550, 100, 200, 200);  
@@ -129,6 +130,20 @@ public class Inventory
         }
 		
 	}
+	
+	//-----------SCRUM CYCLE 3 NEW-------------//
+		// for future use with Item.class
+		/*
+		private void showItemCard(String item_icon_directory, String item_name, String item_description, int ind, Graphics2D g2d)
+		{
+			if (this.index == ind)
+			{
+				showIcon(item_icon_directory, 560, 110, 40, 40, g2d);
+	        	printString(item_name, 620, 140, g2d);
+	        	printString(item_description, 560, 180, g2d);
+			}
+		}
+		*/
 	
 	// print new info onto the rectangle
 	private void printString(String text, int axis_x, int axis_y, Graphics2D g2d)
