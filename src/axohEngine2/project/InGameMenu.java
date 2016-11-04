@@ -31,6 +31,8 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import axohEngine2.project.Weapon;
+import axohEngine2.project.Item;
 
 
 
@@ -82,6 +84,9 @@ public class InGameMenu {
 	private int experience;
 	private int nextLevel = 20;
 	private int nextExp = 25;
+	
+	
+	
 	
 	/********************************************************************************************
 	 * The Items algorithms need an explanation, starting with:
