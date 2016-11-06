@@ -25,7 +25,6 @@ public class Player
 	public Mob getPlayerMobStart(SpriteSheet mainCharacter, Mob playerMob, Graphics2D graphics, JFrame jframe,
 			LinkedList<AnimatedSprite> sprites, int playerNumber){
 		
-		
 		mainCharacter = new SpriteSheet("/textures/characters/Pokemon2.png", 8, 8, 32, 4);
 		Rectangle leftBounds = new Rectangle(11 * 4 + 1, 22 * 4 + 12, 1, 9 * 4 - 12);
 		Rectangle rightBounds = new Rectangle(11 * 4 + 35, 22 * 4 + 12, 1, 9 * 4 - 12);

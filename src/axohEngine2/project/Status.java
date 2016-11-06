@@ -13,6 +13,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import axohEngine2.entities.Mob;
+
 // --------------------SCRUM CYCLE 2 NEW--------------------------//
 
 public class Status 
@@ -27,7 +29,7 @@ public class Status
      
      // status -- will be substituted by real numbers in the future
      int level = 1;
-     int hp = 35;
+     int hp;
      int attack = 10;
      int defense = 7;
      int intelligence = 10;
@@ -40,9 +42,9 @@ public class Status
 	{
 		//-------------USED TO GENERATE BLACK BOX BACKGROUND--------//
 		g2d.setColor(Color.white);
-		g2d.drawRect(770, 140, 350, 320);  
+		g2d.drawRect(770, 140, 350, 360);  
         g2d.setColor(Color.black);  
-        g2d.fillRect(770, 140, 350, 320);
+        g2d.fillRect(770, 140, 350, 360);
         
         // set font
         f = new Font("Helvetica", Font.PLAIN, 30); //Font Helvetica Size 30
@@ -67,7 +69,7 @@ public class Status
 		
         // exit
         f = new Font("Helvetica", Font.PLAIN, 25); 
-        printString(textExit, 772, 450, g2d);
+        printString(textExit, 772, 480, g2d);
 	}
 	
 	// print new info onto the rectangle
@@ -83,6 +85,18 @@ public class Status
 		g2d.translate(-axis_x, -axis_y);
 	}
 	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+
 	// print icons onto the rectangle
 	private void showIcon(String filename, int axis_x, int axis_y, int width, int length, Graphics2D g2d)
 	{
@@ -92,6 +106,12 @@ public class Status
         } catch (IOException ioe) {
         	ioe.printStackTrace();
         }
+	}
+	public void setHealth(int health){
+		hp = health;
+	}
+	public void setDefense(int defense){
+		this.defense = defense;
 	}
 }
 

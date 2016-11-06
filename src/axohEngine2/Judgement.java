@@ -39,6 +39,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
+import com.sun.media.jfxmedia.events.PlayerTimeListener;
+
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 //import sun.org.mozilla.javascript.internal.ast.Loop;
@@ -480,6 +482,11 @@ public class Judgement extends Game {
 			// add status screen
 			if (renderStatus)
 			{
+				status.setHealth(playerMob.getCurrHealth());
+				status.setAttack(20); //Stock number as attack is it's own thing
+				status.setIntelligence(100); //There currently is no Intelligence variable so this is a holder
+				status.setLevel(1); //There is no Level variable so this is stock.
+				status.setDefense(100); //There is no defense variable so this is a stock number.
 				status.render(this, g2d);
 			}
 			if (renderTutorial){
