@@ -9,9 +9,12 @@ import java.awt.font.TextLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import axohEngine2.project.Item;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+
+import com.apple.dnssd.TXTRecord;
 
 public class Inventory 
 {
@@ -19,21 +22,30 @@ public class Inventory
 	// index == selection == position of the oval 
 	// maxItemType == the total kinds of items the character have for now
 	// count == the counter for each certain type of item
-	int index;
+	int index = 0;
 	int maxItemType;
-	int count;
+	//int count;
 	
-	String text1;
-    String text2;
-    String text3;
+	Item itemShow;
+	
+	//String text1;
+    //String text2;
+    //String text3;
     String textExit;
     Font f;
     TextLayout t1;
     Shape shape;
 	
+    
 	public int getIndex()
 	{
 		return index;
+	}
+	
+	public Boolean updateItem(Item it){
+		itemShow = it;
+		maxItemType = itemShow.getItemTotal();
+		return true;
 	}
 	
 	public void setIndex(int i)
@@ -48,11 +60,6 @@ public class Inventory
 		}
 	}
 	
-	public Inventory (int i, int mi)
-	{
-		index = i;
-		maxItemType = mi;
-	}
 	
 	public void indexDown()
 	{
@@ -78,9 +85,20 @@ public class Inventory
 		g2d.setColor(Color.yellow);
 		g2d.fillOval(x, y, 24, 24);
         
-        count = 1;
+        //count = 1;
         f = new Font("Helvetica", Font.PLAIN, 30);
+        int yStart = 110;
+        for(int i = 0; i < itemShow.getNWeapon(); i++){
+        	//System.out.println("./res/textures/items/" + itemShow.getWeaponName(i) + ".png");
+        	showIcon("./res/textures/items/" + itemShow.getWeaponName(i) + ".png", 810, yStart + i * 40, 40, 40, g2d);
+        	String txtTmp = itemShow.getWeapon(i);
+        	printString(txtTmp, 870, yStart + 30 + i*40, g2d);
+            setStringColor(txtTmp, i, 870, yStart + 30 + i*40, g2d);
+        }
         
+        /*
+         * temporary items
+         * 
         text1 = "Bomb   *            " + count;
         showIcon("./res/textures/items/bomb.png", 810, 110, 40, 40, g2d);
         printString(text1, 870, 140, g2d);
@@ -95,6 +113,7 @@ public class Inventory
         showIcon("./res/textures/items/sword.png", 810, 190, 40, 40, g2d);
         printString(text3, 870, 220, g2d);
         setStringColor(text3, 2, 870, 220, g2d);
+        */
         
         
         
@@ -109,6 +128,13 @@ public class Inventory
         g2d.setColor(Color.black);  
         g2d.fillRect(550, 100, 200, 200);
         
+        
+        showIcon("./res/textures/items/" + itemShow.getWeaponName(index) + ".png", 560, 110, 40, 40, g2d);
+        String txtTmp = itemShow.getWeaponName(index);
+        printString(txtTmp, 615, 140, g2d);
+        txtTmp = itemShow.getWeaponDescription(index);
+        printString(txtTmp, 560, 180, g2d);
+        /*
         if (this.index == 0)
         {
         	showIcon("./res/textures/items/bomb.png", 560, 110, 40, 40, g2d);
@@ -128,6 +154,7 @@ public class Inventory
         	printString("Sword", 620, 140, g2d);
         	printString("Attack + 10", 560, 180, g2d);
         }
+        */
 		
 	}
 	

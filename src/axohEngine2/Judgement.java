@@ -39,7 +39,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
-import com.sun.media.jfxmedia.events.PlayerTimeListener;
+//import com.sun.media.jfxmedia.events.PlayerTimeListener;
 
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -57,6 +57,7 @@ import axohEngine2.player.Player;
 import axohEngine2.project.Chest;
 import axohEngine2.project.InGameMenu;
 import axohEngine2.project.Inventory;
+import axohEngine2.project.Item;
 import axohEngine2.project.MapDatabase;
 import axohEngine2.project.OPTION;
 import axohEngine2.project.Quests;
@@ -65,6 +66,7 @@ import axohEngine2.project.TYPE;
 import axohEngine2.project.Textbox;
 import axohEngine2.project.TileCreator;
 import axohEngine2.project.TitleMenu;
+import axohEngine2.project.Weapon;
 import axohEngine2.project.Status;
 
 //Start class by also extending the 'Game.java' engine interface
@@ -219,9 +221,12 @@ public class Judgement extends Game {
 	
 	int selection = 0;
 	
+	
+	Item goods;
+	
 	// Create instances
 	Status status = new Status();
-	Inventory inventory = new Inventory(0, 3);
+	Inventory inventory = new Inventory();
 	Quests quest = new Quests();
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	String[] dialogue = quest.getDialogue();
@@ -391,8 +396,14 @@ public class Judgement extends Game {
 		}
 		catch (Exception ex) {}
 		
+		goods = new Item();
+		Weapon tmp = new Weapon("Sword", 10);
+		goods.addWeapon(tmp, 1);
+		
 		requestFocus(); //Make sure the game is focused on
 		start(); //Start the game loop
+		
+
 	}
 	
 	/**************************************************************************** 
@@ -478,6 +489,7 @@ public class Judgement extends Game {
 			}
 			if (renderInventory)
 			{
+				inventory.updateItem(goods);
 				inventory.render(this, g2d);
 			}
 			
@@ -1612,8 +1624,31 @@ public class Judgement extends Game {
 						currentMap.setOverlayTile(intersectedTile.getMapCoordX(), intersectedTile.getMapCoordY(), tile); // set tile to open chest
 						intersectTile = false;
 						intersectedTile = null;
-						renderChest = true;
+						//renderChest = true;
 						
+						// Generate a random number to get the chests open with different items
+						Random randomGenerator = new Random();
+						int randomNum = randomGenerator.nextInt(3);
+						
+						if (randomNum == 0)
+						{
+							Weapon tmp = new Weapon("Bomb", 7);
+							goods.addWeapon(tmp, 5);
+							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
+						}
+						else if (randomNum == 1)
+						{
+							Weapon tmp = new Weapon("Sword", 10);
+							goods.addWeapon(tmp, 1);
+							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
+						}
+						else {
+							Weapon tmp = new Weapon("Crystal Ball", 15);
+							goods.addWeapon(tmp, 1);
+							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
+						}
+						
+						// play chest opening sound
 						try{
 							JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
 							catch (Exception ex) {}
@@ -3338,7 +3373,7 @@ public class Judgement extends Game {
 			{
 				//Backspace(Exit choice)
 				
-				System.out.println("New Game Option");
+				//System.out.println("New Game Option");
 				if(keyBack && !title.isGetName() && title.getFileName().length() == 0)
 				{
 					titleLocation = 0;

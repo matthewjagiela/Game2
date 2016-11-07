@@ -25,7 +25,9 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+import axohEngine2.project.Item;
 import axohEngine2.project.TYPE;
+import axohEngine2.project.Weapon;
 
 public class Mob extends AnimatedSprite{
 	
@@ -320,8 +322,11 @@ public class Mob extends AnimatedSprite{
 		if(ai == TYPE.CHASE) {
 			chase();
 		}
-		if(hostile && health < 0) {
+		if(hostile && health <= 0) {
+			//System.out.println("works here");
 			setAlive(false);
+			
+			
 		}
 	}
 	
