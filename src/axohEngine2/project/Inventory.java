@@ -9,12 +9,9 @@ import java.awt.font.TextLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import axohEngine2.project.Item;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
-import com.apple.dnssd.TXTRecord;
 
 public class Inventory 
 {

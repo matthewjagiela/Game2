@@ -362,7 +362,7 @@ public class MapDatabase
 		 
 		 
 		 currentTile = new Point(30, 20);
-		 Mob blakeMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "test3", 56, bounds, leftBounds, rightBounds,
+		 Mob blakeMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "Blake", 56, bounds, leftBounds, rightBounds,
 					upBounds, downBounds, boundsLocation,
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, false,
 					hurtBox); // changed it from false to true so it can't get attacked
@@ -373,10 +373,11 @@ public class MapDatabase
 		 
 		 //When interacted with brings up a text box
 		 currentTile = new Point(32, 20);
-		 Mob duncanMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "test4", 40, bounds, leftBounds, rightBounds,
+		 Mob duncanMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "Duncan", 40, bounds, leftBounds, rightBounds,
 					upBounds, downBounds, boundsLocation,
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, false,
 					hurtBox);
+		 System.out.println("Duncan collision");
 		 duncanMob.setMaxHealth(50);
 		 duncanMob.stopAnim();
 		 duncanMob.setAnimTo(duncanMob.getStartFrame());
@@ -385,10 +386,11 @@ public class MapDatabase
 		 
 		 
 		 currentTile = new Point(34, 20);
-		 Mob hoffmanMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "test5", 48, bounds, leftBounds, rightBounds,
+		 Mob hoffmanMob = new Mob(frame, g2d, professors, 40, TYPE.NPC, "Hoffman", 48, bounds, leftBounds, rightBounds,
 					upBounds, downBounds, boundsLocation,
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, false,
 					hurtBox);
+		 System.out.println("hoffman collision");
 		 hoffmanMob.setMaxHealth(999);
 		 hoffmanMob.stopAnim();
 		 hoffmanMob.setAnimTo(hoffmanMob.getStartFrame());

@@ -29,6 +29,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -232,6 +233,8 @@ public class Judgement extends Game {
 	String[] dialogue = quest.getDialogue();
 	private int dialogueTracker = -1;
 	private int dialogueWait = 0;
+	
+	String intersectedNPC = "";
 	
 	/*********************************************************************** 
 	 * Constructor
@@ -1139,6 +1142,9 @@ public class Judgement extends Game {
 						{
 							if (!mobs.get(i).getEnemy())
 							{
+								//System.out.println(mobs.get(i).getEn);
+								intersectedNPC = mobs.get(i).getName();
+						
 								intersectSprite = true;
 							}
 							break mainLoop;
@@ -1176,6 +1182,7 @@ public class Judgement extends Game {
 						{
 							if (!mobs.get(i).getEnemy())
 							{
+								intersectedNPC = mobs.get(i).getName();
 								intersectSprite = true;
 							}
 							break mainLoop;
@@ -1222,6 +1229,7 @@ public class Judgement extends Game {
 					{
 						if (!mobs.get(i).getEnemy())
 						{
+							intersectedNPC = mobs.get(i).getName();
 							intersectSprite = true;
 						}
 						break mainLoop;
@@ -1258,6 +1266,7 @@ public class Judgement extends Game {
 					{
 						if (!mobs.get(i).getEnemy())
 						{
+							intersectedNPC = mobs.get(i).getName();
 							intersectSprite = true;
 						}
 						break mainLoop;
@@ -1956,6 +1965,9 @@ public class Judgement extends Game {
 //							catch (Exception ex) {}
 						renderTextbox = true;
 						//inputWait = 10;
+						//System.out.println();
+						System.out.println(intersectedNPC);
+						System.out.println("Judgement.java: IntersectSprite");
 						return;
 					}
 					else
@@ -2149,10 +2161,20 @@ public class Judgement extends Game {
 			
 			if (keyChat) {
 				if (dialogueWait <= 0) {
-					if (dialogueTracker <= 71) {
-						dialogueTracker++;
-						textbox.setTextBox(dialogue[dialogueTracker]);
-						dialogueWait = 6;
+					//ArrayList<String>dialogueList = new ArrayList<String>();
+					
+						//System.out.println(dialogueTracker);
+						//textbox.setTextBox(dialogue[dialogueTracker]);
+						//dialogueWait = 6;
+						//dialogueTracker++;
+					if(intersectedNPC.equals("Blake")){
+						textbox.setTextBox("Hello I am professor Blake!");
+					}
+					else if(intersectedNPC.equals("Hoffman")){
+						textbox.setTextBox("Hello I am professor Hoffman!");
+					}
+					else{
+						textbox.setTextBox("Hello I am professor Duncan!");
 					}
 				}
 			}
