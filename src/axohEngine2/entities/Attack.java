@@ -285,7 +285,7 @@ public class Attack {
 		if(direction == DIRECTION.UP){
 			return attackUp;
 		}
-		if(direction == DIRECTION.DOWN){
+		 if(direction == DIRECTION.DOWN){
 			return attackDown;
 		}
 		if(direction == DIRECTION.LEFT){
@@ -296,6 +296,7 @@ public class Attack {
 		}
 		return -1;
 	}
+	
 	
 	//Check to see if an attack has a specific animation
 	public boolean hasMoveAnim() { return hasMoveAnim; }

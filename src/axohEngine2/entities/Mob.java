@@ -80,6 +80,7 @@ public class Mob extends AnimatedSprite{
 	private int startFrame; // checks which frame the sprite starts on when being drawn
 	private Rectangle bounds; // bounds of the player 
 	
+	//the specific bounds of the palyer rectangle
 	private Rectangle leftBounds;
 	private Rectangle rightBounds;
 	private Rectangle upBounds;
@@ -92,7 +93,7 @@ public class Mob extends AnimatedSprite{
 	private Rectangle fullRightBounds;
 	private Rectangle fullUpBounds;
 	private Rectangle fullDownBounds;
-	
+	//self explanatory
 	private Point currentTile;
 	private Point startTile;
 	private Point currentLocation;
@@ -109,6 +110,7 @@ public class Mob extends AnimatedSprite{
 	private int maxHealth;
 	private int currHealth;
 	private boolean isAttacked;
+	//not sure yet
 	private RI ri;
 	
 	/************************************************************************
