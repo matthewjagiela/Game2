@@ -54,6 +54,7 @@ import axohEngine2.map.Tile;
 import axohEngine2.map.TileEvent;
 import axohEngine2.map.TileEventType;
 import axohEngine2.player.Player;
+import axohEngine2.project.Chest;
 import axohEngine2.project.InGameMenu;
 import axohEngine2.project.Inventory;
 import axohEngine2.project.MapDatabase;
@@ -200,6 +201,7 @@ public class Judgement extends Game {
 	boolean renderInventory;
 	boolean renderStatus;
 	boolean renderTutorial;
+	boolean renderChest;
 	
 	
 	
@@ -491,7 +493,13 @@ public class Judgement extends Game {
 			}
 			if (renderTutorial){
 				tutorial.render(this, g2d);
+			} 
+			//Add chests
+			if(renderChest){
+				Chest chest = new Chest();
+				chest.render(this, g2d);
 			}
+			
 //			Player player = new Player();
 //			npcMob = player.getPlayerMobStart(mainCharacter, npcMob, graphics(), this, sprites(), playerNumber);
 //			npcMob.renderMob(100,100);
@@ -1604,6 +1612,7 @@ public class Judgement extends Game {
 						currentMap.setOverlayTile(intersectedTile.getMapCoordX(), intersectedTile.getMapCoordY(), tile); // set tile to open chest
 						intersectTile = false;
 						intersectedTile = null;
+						renderChest = true;
 						
 						try{
 							JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
@@ -1612,6 +1621,7 @@ public class Judgement extends Game {
 				}
 				break;
 			case "Nothing":
+			
 				break;
 		
 		}
@@ -2094,6 +2104,11 @@ public class Judgement extends Game {
 					canInGameMenu = true;
 					
 					inputWait = 10;
+				}
+			}
+			if(renderChest){
+				if(keyCancel){
+					renderChest = false;
 				}
 			}
 			
