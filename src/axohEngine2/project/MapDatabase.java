@@ -356,6 +356,8 @@ public class MapDatabase
 		newMob.setAnimTo(FredNPC.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
 		newMob.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
 		
+		//newMob.setRI(RI.Attack); trying to work on attack for later
+		
 		 mobs.add(newMob);
 		 
 		 
