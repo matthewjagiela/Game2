@@ -59,6 +59,7 @@ import axohEngine2.project.Chest;
 import axohEngine2.project.InGameMenu;
 import axohEngine2.project.Inventory;
 import axohEngine2.project.Item;
+import axohEngine2.project.ItemGetsScreen;
 import axohEngine2.project.MapDatabase;
 import axohEngine2.project.OPTION;
 import axohEngine2.project.Quests;
@@ -205,9 +206,7 @@ public class Judgement extends Game {
 	boolean renderStatus;
 	boolean renderTutorial;
 	boolean renderChest;
-	
-	
-	
+	boolean renderItemGetsScreen;
 	
 	// get tile you are currently intersecting (if any)
 	boolean intersectTile; // checks if you are currently intersecting with a tile or not
@@ -230,6 +229,7 @@ public class Judgement extends Game {
 	Inventory inventory = new Inventory();
 	Quests quest = new Quests();
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
+	ItemGetsScreen itemGetsScreen = new ItemGetsScreen(); // Control the item display with chest opening and NPC death SCRUM 3
 	String[] dialogue = quest.getDialogue();
 	private int dialogueTracker = -1;
 	private int dialogueWait = 0;
@@ -492,8 +492,18 @@ public class Judgement extends Game {
 			}
 			if (renderInventory)
 			{
+				// close the pop up msg screen if it's on display 
+				renderItemGetsScreen = false;
+				// update the storage before rendering
 				inventory.updateItem(goods);
 				inventory.render(this, g2d);
+			}
+			
+			// render a info screen with chest opening
+			// and with NPC death
+			if (renderItemGetsScreen) 
+			{
+				itemGetsScreen.render(this, g2d);
 			}
 			
 			// add status screen
@@ -509,11 +519,15 @@ public class Judgement extends Game {
 			if (renderTutorial){
 				tutorial.render(this, g2d);
 			} 
+			
 			//Add chests
+			/*
 			if(renderChest){
 				Chest chest = new Chest();
 				chest.render(this, g2d);
 			}
+			*/
+			
 			
 //			Player player = new Player();
 //			npcMob = player.getPlayerMobStart(mainCharacter, npcMob, graphics(), this, sprites(), playerNumber);
@@ -1643,17 +1657,25 @@ public class Judgement extends Game {
 						{
 							Weapon tmp = new Weapon("Bomb", 7);
 							goods.addWeapon(tmp, 5);
+							
+							// for pop-up msg
+							itemGetsScreen.setMessage(tmp.getName() + " *5 Get!", tmp.getName());
+							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
 						}
 						else if (randomNum == 1)
 						{
 							Weapon tmp = new Weapon("Sword", 10);
 							goods.addWeapon(tmp, 1);
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get!", tmp.getName());
+							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
 						else {
 							Weapon tmp = new Weapon("Crystal Ball", 15);
 							goods.addWeapon(tmp, 1);
+							itemGetsScreen.setMessage(tmp.getName()  + " *1 Get!", tmp.getName());
+							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
 						
@@ -1672,6 +1694,7 @@ public class Judgement extends Game {
 		
 		
 	}
+	
 	
 //	public Point getIntersectedTile(DIRECTION currentDirection)
 //	{
@@ -1908,6 +1931,7 @@ public class Judgement extends Game {
 	boolean canInventory = true;
 	boolean canStatus = true;
 	boolean canTutorial = true;
+	boolean canItemGetsScreen = true;
 	
 	int xa;
 	int ya;
@@ -2121,6 +2145,20 @@ public class Judgement extends Game {
 				if (keyCancel)
 				{
 					renderInventory = false;
+					canEnter = true;
+					canInGameMenu = true;
+					
+					inputWait = 10;
+				}
+			}
+			
+			// SCRUM CYCLE 3 NEW
+			// To close the pop-up screen on item dropping
+			if (renderItemGetsScreen && canItemGetsScreen)
+			{
+				if (keyCancel)
+				{
+					renderItemGetsScreen = false;
 					canEnter = true;
 					canInGameMenu = true;
 					
