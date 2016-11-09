@@ -128,7 +128,7 @@ public class Inventory
         
         showIcon("./res/textures/items/" + itemShow.getWeaponName(index) + ".png", 560, 110, 40, 40, g2d);
         String txtTmp = itemShow.getWeaponName(index);
-        printString(txtTmp, 615, 140, g2d);
+        printString(txtTmp, 605, 140, g2d);
         txtTmp = itemShow.getWeaponDescription(index);
         printString(txtTmp, 560, 180, g2d);
         /*

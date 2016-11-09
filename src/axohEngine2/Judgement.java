@@ -1651,7 +1651,7 @@ public class Judgement extends Game {
 						
 						// Generate a random number to get the chests open with different items
 						Random randomGenerator = new Random();
-						int randomNum = randomGenerator.nextInt(3);
+						int randomNum = randomGenerator.nextInt(5);
 						
 						if (randomNum == 0)
 						{
@@ -1659,7 +1659,7 @@ public class Judgement extends Game {
 							goods.addWeapon(tmp, 5);
 							
 							// for pop-up msg
-							itemGetsScreen.setMessage(tmp.getName() + " *5 Get!", tmp.getName());
+							itemGetsScreen.setMessage(tmp.getName() + " *5 Get~", tmp.getName());
 							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
 						}
@@ -1667,14 +1667,37 @@ public class Judgement extends Game {
 						{
 							Weapon tmp = new Weapon("Sword", 10);
 							goods.addWeapon(tmp, 1);
-							itemGetsScreen.setMessage(tmp.getName() + " *1 Get!", tmp.getName());
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
 							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
+						
+						if (randomNum == 2)
+						{
+							Weapon tmp = new Weapon("Broken Sword", 2);
+							goods.addWeapon(tmp, 1);
+							
+							// for pop-up msg
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+							renderItemGetsScreen = true;
+							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
+						}
+						
+						if (randomNum == 3)
+						{
+							Weapon tmp = new Weapon("Fire Staff", 17);
+							goods.addWeapon(tmp, 1);
+							
+							// for pop-up msg
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+							renderItemGetsScreen = true;
+							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
+						}
+						
 						else {
 							Weapon tmp = new Weapon("Crystal Ball", 15);
 							goods.addWeapon(tmp, 1);
-							itemGetsScreen.setMessage(tmp.getName()  + " *1 Get!", tmp.getName());
+							itemGetsScreen.setMessage(tmp.getName()  + " *1 Get~", tmp.getName());
 							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
