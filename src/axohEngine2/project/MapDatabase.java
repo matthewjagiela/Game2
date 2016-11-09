@@ -305,10 +305,30 @@ public class MapDatabase
 		
 		FredNPC.setMoveAnim(32, 48, 40, 56, 3, 8);
 		
-		LinkedList<Rectangle> attackBounds = new LinkedList<Rectangle>();
+		LinkedList<Rectangle> attackLeftBounds = new LinkedList<Rectangle>();
+		attackLeftBounds.add(new Rectangle(0,0,0,0));
+		attackLeftBounds.add(new Rectangle(8, 46, 38, 68));
+		attackLeftBounds.add(new Rectangle(8, 46, 38, 68));
+		
+		LinkedList<Rectangle> attackRightBounds = new LinkedList<Rectangle>();
+		attackRightBounds.add(new Rectangle(0,0,0,0));
+		attackRightBounds.add(new Rectangle(90, 46, 38, 68));
+		attackRightBounds.add(new Rectangle(90, 46, 38, 68));
+		
+		LinkedList<Rectangle> attackUpBounds = new LinkedList<Rectangle>();
+		attackUpBounds.add(new Rectangle(0,0,0,0));
+		attackUpBounds.add(new Rectangle(32, 40, 58, 18));
+		attackUpBounds.add(new Rectangle(32, 40, 58, 18));
+		
+		LinkedList<Rectangle> attackDownBounds = new LinkedList<Rectangle>();
+		attackDownBounds.add(new Rectangle(0,0,0,0));
+		attackDownBounds.add(new Rectangle(32, 96, 58, 18));
+		attackDownBounds.add(new Rectangle(32, 96, 58, 18));
+		
 		//FredNPC.setHealth(5);
 		FredNPC.setMaxHealth(20);
-		FredNPC.addAttack("sword", 1, attackBounds, attackBounds, attackBounds, attackBounds);
+		FredNPC.setHurtBox(hurtBox);
+		FredNPC.addAttack("sword", 1, attackLeftBounds, attackRightBounds, attackUpBounds, attackDownBounds);
 		//FredNPC.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
 		//FredNPC.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
 		//FredNPC.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
@@ -346,7 +366,7 @@ public class MapDatabase
 					currentTile, startTile, currentLocation, startLocation, actionBounds, fullBounds, fullBoundsLocation, true,
 					hurtBox);
 		newMob.setMaxHealth(5);
-		newMob.addAttack("sword", 2, attackBounds, attackBounds, attackBounds, attackBounds);
+		newMob.addAttack("sword", 1, attackLeftBounds, attackRightBounds, attackUpBounds, attackDownBounds);
 		newMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
 		newMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
 		newMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
