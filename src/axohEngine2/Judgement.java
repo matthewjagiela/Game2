@@ -15,23 +15,17 @@
 //Package name
 package axohEngine2;
 
-//Imports
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Stroke;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -40,10 +34,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
-//import com.sun.media.jfxmedia.events.PlayerTimeListener;
-
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 //import sun.org.mozilla.javascript.internal.ast.Loop;
 import axohEngine2.entities.AnimatedSprite;
 import axohEngine2.entities.DIRECTION;
@@ -52,10 +42,7 @@ import axohEngine2.entities.Mob;
 import axohEngine2.entities.SpriteSheet;
 import axohEngine2.map.Map;
 import axohEngine2.map.Tile;
-import axohEngine2.map.TileEvent;
-import axohEngine2.map.TileEventType;
 import axohEngine2.player.Player;
-import axohEngine2.project.Chest;
 import axohEngine2.project.InGameMenu;
 import axohEngine2.project.Inventory;
 import axohEngine2.project.Item;
@@ -64,12 +51,12 @@ import axohEngine2.project.MapDatabase;
 import axohEngine2.project.OPTION;
 import axohEngine2.project.Quests;
 import axohEngine2.project.STATE;
+import axohEngine2.project.Status;
 import axohEngine2.project.TYPE;
 import axohEngine2.project.Textbox;
 import axohEngine2.project.TileCreator;
 import axohEngine2.project.TitleMenu;
 import axohEngine2.project.Weapon;
-import axohEngine2.project.Status;
 
 //Start class by also extending the 'Game.java' engine interface
 public class Judgement extends Game {
@@ -1701,7 +1688,14 @@ public class Judgement extends Game {
 							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
-						
+						Timer timer = new Timer();
+						timer.schedule(new TimerTask() {
+							  @Override
+							  public void run() {
+								  System.out.println("timer run");
+							    renderItemGetsScreen = false;
+							  }
+							}, 1000);
 						// play chest opening sound
 						try{
 							JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
