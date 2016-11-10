@@ -25,6 +25,8 @@ import javax.swing.JFrame;
 import axohEngine2.entities.Mob;
 import axohEngine2.entities.RI;
 import axohEngine2.entities.SpriteSheet;
+import axohEngine2.Judgement;
+import axohEngine2.entities.Attack;
 import axohEngine2.map.Event;
 import axohEngine2.map.Map;
 import axohEngine2.map.Tile;
@@ -329,20 +331,21 @@ public class MapDatabase
 		FredNPC.setMaxHealth(20);
 		FredNPC.setHurtBox(hurtBox);
 		FredNPC.addAttack("sword", 1, attackLeftBounds, attackRightBounds, attackUpBounds, attackDownBounds);
-		//FredNPC.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
-		//FredNPC.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
-		//FredNPC.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
-		Tile tile = cityTiles[FredNPC.getCurrentTile().x + FredNPC.getCurrentTile().y+40];
-		Rectangle tileBounds = new Rectangle(tile.getLocation().x, tile.getLocation().y, 64, 64);  
-		FredNPC.getAttack("sword").setAttackBoundsLocation(new Rectangle(
-				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
-		//playerMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(startPosX + bounds.x, startPosY + bounds.y, bounds.width, bounds.height));
+		FredNPC.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
+		FredNPC.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
+		FredNPC.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
 		FredNPC.setCurrentAttack("sword"); //Starting attack
+		//Tile tile = cityTiles[FredNPC.getCurrentTile().x + FredNPC.getCurrentTile().y+40];
+		//Rectangle tileBounds = new Rectangle(tile.getLocation().x, tile.getLocation().y, 64, 64);  
+		//FredNPC.getAttack("sword").setAttackBoundsLocation(new Rectangle(tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
+		//playerMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(startPosX + bounds.x, startPosY + bounds.y, bounds.width, bounds.height));
 		FredNPC.stopAnim(); // stops the moving in place right when player loads
 		FredNPC.setAnimTo(FredNPC.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
 		FredNPC.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
 		
 		FredNPC.setRI(RI.Attack);
+		Judgement.playerUpdate = true;
+		
 		
 		mobs.add(FredNPC);
 		
@@ -370,8 +373,8 @@ public class MapDatabase
 		newMob.getAttack("sword").addMovingAnim(17, 25, 9, 1, 3, 8);
 		newMob.getAttack("sword").addAttackAnim(20, 28, 12, 4, 3, 6);
 		newMob.getAttack("sword").addInOutAnim(16, 24, 8, 0, 1, 10);
-		newMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
-				tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
+		//newMob.getAttack("sword").setAttackBoundsLocation(new Rectangle(
+				//tileBounds.x + bounds.x, tileBounds.y + bounds.y, bounds.width, bounds.height));
 		newMob.stopAnim(); // stops the moving in place right when player loads
 		newMob.setAnimTo(FredNPC.getStartFrame()); // stops the odd animation loading and sets player to start on its wanted start frame
 		newMob.setHealthBarLocation(new Rectangle(8 * 4, 1 * 4, 14 * 4, 30 * 4));
