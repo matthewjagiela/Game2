@@ -1659,7 +1659,7 @@ public class Judgement extends Game {
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 1");
 						}
 						
-						if (randomNum == 2)
+						else if (randomNum == 2)
 						{
 							Weapon tmp = new Weapon("Broken Sword", 2);
 							goods.addWeapon(tmp, 1);
@@ -1670,7 +1670,7 @@ public class Judgement extends Game {
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
 						}
 						
-						if (randomNum == 3)
+						else if (randomNum == 3)
 						{
 							Weapon tmp = new Weapon("Fire Staff", 17);
 							goods.addWeapon(tmp, 1);

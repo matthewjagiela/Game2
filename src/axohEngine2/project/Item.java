@@ -98,7 +98,7 @@ public class Item
 		}
 		
 		String tmp;
-		tmp = weapons.get(i).getName() + "     *" + numWeapon.get(i);
+		tmp = weapons.get(i).getName() + "    *" + numWeapon.get(i);
 		return tmp;
 	}
 	
@@ -109,7 +109,7 @@ public class Item
 		}
 		
 		String tmp;
-		tmp = healers.get(i).getName() + "     *" + numHealer.get(i);
+		tmp = healers.get(i).getName() + "    *" + numHealer.get(i);
 		return tmp;
 	}
 	
