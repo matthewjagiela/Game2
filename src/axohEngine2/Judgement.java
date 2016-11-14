@@ -1949,6 +1949,7 @@ public class Judgement extends Game {
 	boolean canStatus = true;
 	boolean canTutorial = true;
 	boolean canItemGetsScreen = true;
+	boolean canTextbox = true;
 	
 	int xa;
 	int ya;
@@ -2183,6 +2184,21 @@ public class Judgement extends Game {
 				}
 			}
 			
+			// To close the textbox
+			if (renderTextbox && canTextbox)
+			{
+				if (keyCancel)
+				{
+					renderTextbox = false;
+					canEnter = true;
+					canInGameMenu = true;
+					
+					inputWait = 10;
+				}
+			}
+			
+			
+	
 			
 			// close status screen and reverse states
 			if (renderStatus && canStatus)
