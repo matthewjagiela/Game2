@@ -1993,6 +1993,23 @@ public class Judgement extends Game {
 			{
 				if(keyAction)
 				{
+					if (dialogueWait <= 0) {
+						//ArrayList<String>dialogueList = new ArrayList<String>();
+						
+							//System.out.println(dialogueTracker);
+							//textbox.setTextBox(dialogue[dialogueTracker]);
+							//dialogueWait = 6;
+							//dialogueTracker++;
+						if(intersectedNPC.equals("Blake")){
+							textbox.setTextBox("Hello I am professor Blake!");
+						}
+						else if(intersectedNPC.equals("Hoffman")){
+							textbox.setTextBox("Hello I am professor Hoffman!");
+						}
+						else{
+							textbox.setTextBox("Hello I am professor Duncan!");
+						}
+					}
 					if (intersectTile && !intersectedTile.getEventType().getName().equals("Nothing") &&
 							checkDirectionAllowed(intersectedTile.getEventType().getDirection())) // if you are intersecting a tile, check to see if any events need to be activated
 					{
@@ -2231,7 +2248,7 @@ public class Judgement extends Game {
 			}
 			
 			if (keyChat) {
-				if (dialogueWait <= 0) {
+				/**if (dialogueWait <= 0) {
 					//ArrayList<String>dialogueList = new ArrayList<String>();
 					
 						//System.out.println(dialogueTracker);
@@ -2248,6 +2265,7 @@ public class Judgement extends Game {
 						textbox.setTextBox("Hello I am professor Duncan!");
 					}
 				}
+				**/
 			}
 // this may have the fix for the attacking mobst
 //			if(keyAction)
@@ -3817,9 +3835,10 @@ public class Judgement extends Game {
 	        case KeyEvent.VK_X:
 	        	keyCancel = true;
 	        	break;
-	        case KeyEvent.VK_C:
+	        /**case KeyEvent.VK_C:
 	        	keyChat = true;
 	        	break;
+	        	**/
 	        case KeyEvent.VK_ESCAPE:
 	        	keyEnter = true;
 	        	break;
@@ -3896,9 +3915,10 @@ public class Judgement extends Game {
 	    case KeyEvent.VK_X:
         	keyCancel = false;
         	break;
-	    case KeyEvent.VK_C:
+	    /**case KeyEvent.VK_C:
 	    	keyChat = false;
 	    	break;
+	    	**/
 		}
 	}
 
