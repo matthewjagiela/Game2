@@ -2233,7 +2233,7 @@ public class Judgement extends Game {
 					}
 				}
 			}
-
+// this may have the fix for the attacking mobst
 //			if(keyAction)
 //			{
 //				if (!renderTextbox)
