@@ -51,6 +51,7 @@ import axohEngine2.project.MapDatabase;
 import axohEngine2.project.OPTION;
 import axohEngine2.project.Quests;
 import axohEngine2.project.STATE;
+import axohEngine2.project.Shop;
 import axohEngine2.project.Status;
 import axohEngine2.project.TYPE;
 import axohEngine2.project.Textbox;
@@ -194,6 +195,7 @@ public class Judgement extends Game {
 	boolean renderTutorial;
 	boolean renderChest;
 	boolean renderItemGetsScreen;
+	boolean renderShop;
 	
 	// get tile you are currently intersecting (if any)
 	boolean intersectTile; // checks if you are currently intersecting with a tile or not
@@ -214,6 +216,7 @@ public class Judgement extends Game {
 	// Create instances
 	Status status = new Status();
 	Inventory inventory = new Inventory();
+	Shop shop = new Shop(0, 3);
 	Quests quest = new Quests();
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	ItemGetsScreen itemGetsScreen = new ItemGetsScreen(); // Control the item display with chest opening and NPC death SCRUM 3
@@ -484,6 +487,13 @@ public class Judgement extends Game {
 				// update the storage before rendering
 				inventory.updateItem(goods);
 				inventory.render(this, g2d);
+			}
+			
+			if (renderShop)
+			{
+				shop.render(this, g2d);
+				canMove = false;
+				canAction = false;
 			}
 			
 			// render a info screen with chest opening
@@ -1950,6 +1960,7 @@ public class Judgement extends Game {
 	boolean canTutorial = true;
 	boolean canItemGetsScreen = true;
 	boolean canTextbox = true;
+	boolean canShop = true;
 	
 	int xa;
 	int ya;
@@ -2001,7 +2012,11 @@ public class Judgement extends Game {
 							//dialogueWait = 6;
 							//dialogueTracker++;
 						if(intersectedNPC.equals("Blake")){
-							textbox.setTextBox("Hello I am professor Blake!");
+							textbox.setTextBox("Hello I am professor Blake! Thanks for shopping with us!");
+							
+							// render the shop screen
+							// exit by pressing x
+							renderShop = true;
 						}
 						else if(intersectedNPC.equals("Hoffman")){
 							textbox.setTextBox("Hello I am professor Hoffman!");
@@ -2068,6 +2083,29 @@ public class Judgement extends Game {
 						playerMob.stopAnim();
 					}
 						inputWait = 10;
+				} 
+			}
+			
+			// SCRUM CYCLE 4 NEW
+			// SHOP
+			if (renderShop && canShop)
+			{
+				if(keyUp)
+				{
+					shop.indexUp();
+					inputWait = 10;
+					System.out.println(shop.getIndex());
+				}
+				if(keyDown)
+				{
+					shop.indexDown();
+					inputWait = 10;
+					System.out.println(shop.getIndex());
+				}
+				if(keyAction)
+				{
+					shop.itemBought(shop.getIndex());
+					inputWait = 10;
 				}
 			}
 			
@@ -2089,6 +2127,8 @@ public class Judgement extends Game {
 				}
 			}
 			
+			
+			// in game menu actions
 			if (renderInGameMenu && canInGameMenu)
 			{
 				if (keyUp)
@@ -2187,6 +2227,21 @@ public class Judgement extends Game {
 				}
 			}
 			
+			// SHOP
+			if (renderShop && canShop)
+			{
+				if (keyCancel)
+				{
+					renderShop = false;
+					canEnter = true;
+					canInGameMenu = true;
+					canMove = true;
+					canAction = true;
+					
+					inputWait = 10;
+				}
+			}
+			
 			// SCRUM CYCLE 3 NEW
 			// To close the pop-up screen on item dropping
 			if (renderItemGetsScreen && canItemGetsScreen)
@@ -2248,7 +2303,7 @@ public class Judgement extends Game {
 			}
 			
 			if (keyChat) {
-				/**if (dialogueWait <= 0) {
+				if (dialogueWait <= 0) {
 					//ArrayList<String>dialogueList = new ArrayList<String>();
 					
 						//System.out.println(dialogueTracker);
@@ -2260,12 +2315,13 @@ public class Judgement extends Game {
 					}
 					else if(intersectedNPC.equals("Hoffman")){
 						textbox.setTextBox("Hello I am professor Hoffman!");
+						
 					}
 					else{
 						textbox.setTextBox("Hello I am professor Duncan!");
 					}
 				}
-				**/
+				
 			}
 // this may have the fix for the attacking mobst
 //			if(keyAction)
