@@ -2102,9 +2102,22 @@ public class Judgement extends Game {
 					inputWait = 10;
 					System.out.println(shop.getIndex());
 				}
+				
+				// shop item total decrement
+				// & transfer to inventory 
 				if(keyAction)
 				{
 					shop.itemBought(shop.getIndex());
+					if(shop.getIndex() == 0) 
+					{
+						Weapon tmp = new Weapon("Bomb", 10);
+						goods.addWeapon(tmp, 1);
+					}
+					else if(shop.getIndex() == 2)
+					{
+						Weapon tmp = new Weapon("Sword", 10);
+						goods.addWeapon(tmp, 1);
+					}
 					inputWait = 10;
 				}
 			}
