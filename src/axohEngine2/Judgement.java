@@ -59,6 +59,7 @@ import axohEngine2.project.Textbox;
 import axohEngine2.project.TileCreator;
 import axohEngine2.project.TitleMenu;
 import axohEngine2.project.Weapon;
+import sun.security.action.GetBooleanAction;
 
 //Start class by also extending the 'Game.java' engine interface
 public class Judgement extends Game {
@@ -197,6 +198,7 @@ public class Judgement extends Game {
 	boolean renderChest;
 	boolean renderItemGetsScreen;
 	boolean renderShop;
+	boolean keyUseItem = false;
 	
 	// get tile you are currently intersecting (if any)
 	boolean intersectTile; // checks if you are currently intersecting with a tile or not
@@ -2135,16 +2137,19 @@ public class Judgement extends Game {
 					{
 						Weapon tmp = new Weapon("Bomb", 10);
 						goods.addWeapon(tmp, 1);
+						textbox.setTextBox("Get Bomb * 1");
 					}
 					else if(shop.getIndex() == 1)
 					{
 						Healer tmp = new Healer("Potion", 30);
 						goods.addHealer(tmp, 1);
+						textbox.setTextBox("Get Potion * 1");
 					}
 					else if(shop.getIndex() == 2)
 					{
 						Weapon tmp = new Weapon("Sword", 10);
 						goods.addWeapon(tmp, 1);
+						textbox.setTextBox("Get Sword * 1");
 					}
 					inputWait = 10;
 				}
@@ -2258,6 +2263,15 @@ public class Judgement extends Game {
 			
 			if (renderInventory && canInventory)
 			{
+				if (keyUseItem)
+				{
+					if(inventory.getIndex() < goods.getNWeapon())
+					{
+						goods.removeWeapon(inventory.getIndex(), 1);
+						keyUseItem = false;
+					}
+					inputWait = 10;
+				}
 				if (keyCancel)
 				{
 					renderInventory = false;
@@ -3876,6 +3890,9 @@ public class Judgement extends Game {
 	 */
 	void gameKeyDown(int keyCode) {
 		switch(keyCode) {
+			case KeyEvent.VK_U:
+				keyUseItem = true;
+				break;
 	        case KeyEvent.VK_LEFT:
 	            keyLeft = true;
 	            break;
