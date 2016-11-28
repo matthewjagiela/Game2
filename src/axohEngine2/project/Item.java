@@ -76,14 +76,13 @@ public class Item
 				numHealer.set(i, numHealer.get(i) + nHealer);
 				find = true;
 			}
-			if(!find)
-			{
-				healers.add(healer);
-				numHealer.add(nHealer);
-				itemTotal = itemTotal + 1;
-			}
 		}
-		
+		if(!find)
+		{
+			healers.add(healer);
+			numHealer.add(nHealer);
+			itemTotal = itemTotal + 1;
+		}
 		return true;
 	}
 	

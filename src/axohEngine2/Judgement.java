@@ -43,6 +43,7 @@ import axohEngine2.entities.SpriteSheet;
 import axohEngine2.map.Map;
 import axohEngine2.map.Tile;
 import axohEngine2.player.Player;
+import axohEngine2.project.Healer;
 import axohEngine2.project.InGameMenu;
 import axohEngine2.project.Inventory;
 import axohEngine2.project.Item;
@@ -1648,7 +1649,7 @@ public class Judgement extends Game {
 						
 						// Generate a random number to get the chests open with different items
 						Random randomGenerator = new Random();
-						int randomNum = randomGenerator.nextInt(5);
+						int randomNum = randomGenerator.nextInt(7);
 						
 						if (randomNum == 0)
 						{
@@ -1689,6 +1690,28 @@ public class Judgement extends Game {
 							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
 							renderItemGetsScreen = true;
 							System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
+						}
+						
+						else if (randomNum == 4)
+						{
+							Healer tmp = new Healer("Super Potion", 100);
+							goods.addHealer(tmp, 1);
+							
+							// for pop-up msg
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+							renderItemGetsScreen = true;
+							System.out.println(tmp.getName() + " HP + " + tmp.getHealingPt() + " Get 1");
+						}
+						
+						else if (randomNum == 5)
+						{
+							Healer tmp = new Healer("Potion", 30);
+							goods.addHealer(tmp, 1);
+							
+							// for pop-up msg
+							itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+							renderItemGetsScreen = true;
+							System.out.println(tmp.getName() + " HP + " + tmp.getHealingPt() + " Get 1");
 						}
 						
 						else {
@@ -2112,6 +2135,11 @@ public class Judgement extends Game {
 					{
 						Weapon tmp = new Weapon("Bomb", 10);
 						goods.addWeapon(tmp, 1);
+					}
+					else if(shop.getIndex() == 1)
+					{
+						Healer tmp = new Healer("Potion", 30);
+						goods.addHealer(tmp, 1);
 					}
 					else if(shop.getIndex() == 2)
 					{

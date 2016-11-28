@@ -42,6 +42,8 @@ public class Inventory
 	public Boolean updateItem(Item it){
 		itemShow = it;
 		maxItemType = itemShow.getItemTotal();
+		//System.out.println(itemShow.getNWeapon());
+		//System.out.println(itemShow.getNHealer());
 		return true;
 	}
 	
@@ -85,12 +87,23 @@ public class Inventory
         //count = 1;
         f = new Font("Helvetica", Font.PLAIN, 30);
         int yStart = 110;
+     
         for(int i = 0; i < itemShow.getNWeapon(); i++){
         	//System.out.println("./res/textures/items/" + itemShow.getWeaponName(i) + ".png");
         	showIcon("./res/textures/items/" + itemShow.getWeaponName(i) + ".png", 810, yStart + i * 40, 40, 40, g2d);
         	String txtTmp = itemShow.getWeapon(i);
         	printString(txtTmp, 870, yStart + 30 + i*40, g2d);
             setStringColor(txtTmp, i, 870, yStart + 30 + i*40, g2d);
+        }
+        
+        // start the display of healers after displaying all weapons
+        yStart = yStart + (itemShow.getNWeapon()) * 40;
+        for(int i=0; i < itemShow.getNHealer(); i++){
+        	//System.out.println("./res/textures/items/" + itemShow.getHealerName(i) + ".png");
+        	showIcon("./res/textures/items/" + itemShow.getHealerName(i) + ".png", 810, yStart + i * 40, 40, 40, g2d);
+        	String txtTmp = itemShow.getHealer(i);
+        	printString(txtTmp, 870, yStart + 30 + i*40, g2d);
+            setStringColor(txtTmp, i + itemShow.getNWeapon(), 870, yStart + 30 + i*40, g2d);
         }
         
         /*
@@ -125,12 +138,27 @@ public class Inventory
         g2d.setColor(Color.black);  
         g2d.fillRect(550, 100, 200, 200);
         
+        if (index < itemShow.getNWeapon())
+        {
+        	showIcon("./res/textures/items/" + itemShow.getWeaponName(index) + ".png", 560, 110, 40, 40, g2d);
+        	String txtTmp = itemShow.getWeaponName(index);
+        	printString(txtTmp, 605, 140, g2d);
+        	txtTmp = itemShow.getWeaponDescription(index);
+        	printString(txtTmp, 560, 180, g2d);
+        }
         
-        showIcon("./res/textures/items/" + itemShow.getWeaponName(index) + ".png", 560, 110, 40, 40, g2d);
-        String txtTmp = itemShow.getWeaponName(index);
-        printString(txtTmp, 605, 140, g2d);
-        txtTmp = itemShow.getWeaponDescription(index);
-        printString(txtTmp, 560, 180, g2d);
+        else
+        {
+        	showIcon("./res/textures/items/" + itemShow.getHealerName(index - itemShow.getNWeapon()) + ".png", 560, 110, 40, 40, g2d);
+        	String txtTmp = itemShow.getHealerName(index - itemShow.getNWeapon());
+        	printString(txtTmp, 605, 140, g2d);
+        	txtTmp = itemShow.getHealerDescription(index - itemShow.getNWeapon());
+        	printString(txtTmp, 560, 180, g2d);
+        }
+        
+        
+
+        
         /*
         if (this.index == 0)
         {
@@ -196,14 +224,16 @@ public class Inventory
 	
 	private void setStringColor(String text, int i, int axis_x, int axis_y, Graphics2D g2d)
 	{
-		if (this.index == i) 
-        {
-        	g2d.setColor(Color.yellow);
-        }
-        else
-        {
-        	g2d.setColor(Color.white);
-        }
+		
+			if (this.index == i) 
+			{
+				g2d.setColor(Color.yellow);
+			}
+			else
+			{
+				g2d.setColor(Color.white);
+			}
+		
 		
 		t1 = new TextLayout(text, f, g2d.getFontRenderContext());
 		shape = t1.getOutline(null);
