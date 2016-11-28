@@ -137,21 +137,25 @@ public class Attack {
 				hitBoxX = x;
 				hitBoxY = y;
 				boundSize = size;
+				
 			}
 			if(hitBoxesUsed == 1){
 				hitBoxX2 = x;
 				hitBoxY2 = y;
 				boundSize2 = size;
+				
 			}
 			if(hitBoxesUsed == 2){
 				hitBoxX3 = x;
 				hitBoxY3 = y;
-				boundSize3 = size;			
+				boundSize3 = size;
+				
 			}
 			if(hitBoxesUsed == 3){
 				hitBoxX4 = x;
 				hitBoxY4 = y;
 				boundSize4 = size;
+				
 			}
 			hitBoxesUsed++;
 			return "Hit box added to " + attackName;

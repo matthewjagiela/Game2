@@ -589,7 +589,7 @@ public class Mob extends AnimatedSprite{
 		}
 		else 
 		{
-			if(direction == DIRECTION.LEFT) playOnce(leftAnim, walkFrames, walkDelay, currentAttack.getInOutAnim(direction) + currentAttack.getInOutTotal());
+			if(direction == DIRECTION.LEFT)playOnce(leftAnim, walkFrames, walkDelay, currentAttack.getInOutAnim(direction) + currentAttack.getInOutTotal());
 			if(direction == DIRECTION.RIGHT) playOnce(rightAnim, walkFrames, walkDelay, currentAttack.getInOutAnim(direction) + currentAttack.getInOutTotal());
 			if(direction == DIRECTION.UP) playOnce(upAnim, walkFrames, walkDelay, currentAttack.getInOutAnim(direction) + currentAttack.getInOutTotal());
 			if(direction == DIRECTION.DOWN) playOnce(downAnim, walkFrames, walkDelay, currentAttack.getInOutAnim(direction) + currentAttack.getInOutTotal());

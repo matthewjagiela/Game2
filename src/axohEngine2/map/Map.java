@@ -418,9 +418,10 @@ public class Map {
 				Random rn = new Random();
 				int answer = rn.nextInt(24 + 1) + 1;
 				System.out.println(answer);
-				if (!mob.animating() && answer == 1)
+				if (!mob.animating() && answer == 1 && !mob.attacking())
 				{
 					mob.attack();
+					
 				}
 				
 				
@@ -440,7 +441,7 @@ public class Map {
 //			    if (tile.getLocation().x + mob.getCurrentLocation().x < currentLocX)
 //				{
 //					mob.setCurrentLocation(new Point(mob.getCurrentLocation().x + 5, mob.getCurrentLocation().y));
-//					System.out.println(currentLocX + " THISIS PLAYER");
+//					System.out.println(currentLocX + " THIS IS PLAYER");
 //					int fuck = tile.getBounds().x + mob.getCurrentLocation().x;
 //					System.out.println(fuck);
 //				}

@@ -1578,7 +1578,7 @@ public class Judgement extends Game {
 		}*/
 	}
 	
-	
+
 	
 	/*****************************************************************
 	 * @param int
@@ -2140,8 +2140,8 @@ public class Judgement extends Game {
 					else
 					{
 						playerMob.attack();
-						
-						inputWait = 24;
+						//time after an input can be read after an attack.
+						inputWait = 10;
 						return;
 					}
 				//	return;
