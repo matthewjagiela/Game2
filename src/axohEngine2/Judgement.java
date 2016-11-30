@@ -497,6 +497,8 @@ public class Judgement extends Game {
 				shop.render(this, g2d);
 				canMove = false;
 				canAction = false;
+				canEnter = false;
+				canInGameMenu = false;
 			}
 			
 			// render a info screen with chest opening
@@ -1439,6 +1441,50 @@ public class Judgement extends Game {
 										currentMap.getMobs().get(j).setHealth(0);
 										currentMap.getMobs().remove(j);
 										
+										// item drop on NPC death
+										Random randomGenerator = new Random();
+										int randomNum = randomGenerator.nextInt(3);
+										
+										if (randomNum == 0)
+										{
+											Weapon tmp = new Weapon("Bomb", 7);
+											goods.addWeapon(tmp, 5);
+											
+											// for pop-up msg
+											itemGetsScreen.setMessage(tmp.getName() + " *5 Get~", tmp.getName());
+											renderItemGetsScreen = true;
+											System.out.println(tmp.getName() + " Attack = " + tmp.getAttact() + " Get 5");
+										}
+									
+										else if (randomNum == 1)
+										{
+											Healer tmp = new Healer("Potion", 30);
+											goods.addHealer(tmp, 1);
+											
+											// for pop-up msg
+											itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+											renderItemGetsScreen = true;
+											System.out.println(tmp.getName() + " HP + " + tmp.getHealingPt() + " Get 1");
+										}
+										
+										else {
+											Healer tmp = new Healer("Super Potion", 100);
+											goods.addHealer(tmp, 1);
+											
+											// for pop-up msg
+											itemGetsScreen.setMessage(tmp.getName() + " *1 Get~", tmp.getName());
+											renderItemGetsScreen = true;
+											System.out.println(tmp.getName() + " HP + " + tmp.getHealingPt() + " Get 1");
+										}
+										Timer timer = new Timer();
+										timer.schedule(new TimerTask() {
+											  @Override
+											  public void run() {
+												  System.out.println("timer run");
+											    renderItemGetsScreen = false;
+											  }
+											}, 1000);
+										
 									} 
 									// SCRUM Cycle 4 NEW
 									// npc will attack back after being hit
@@ -2157,7 +2203,7 @@ public class Judgement extends Game {
 					shop.itemBought(shop.getIndex());
 					if(shop.getIndex() == 0) 
 					{
-						Weapon tmp = new Weapon("Bomb", 10);
+						Weapon tmp = new Weapon("Bomb", 7);
 						goods.addWeapon(tmp, 1);
 						textbox.setTextBox("Get Bomb * 1");
 					}
