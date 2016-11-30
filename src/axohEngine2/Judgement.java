@@ -1434,8 +1434,28 @@ public class Judgement extends Game {
 				
 									if (currentMap.getMobs().get(j).getCurrHealth() <= 0)
 									{
+										// on NPC death
+										// System.out.println("AAAA Dead");
 										currentMap.getMobs().get(j).setHealth(0);
 										currentMap.getMobs().remove(j);
+										
+									} 
+									// SCRUM Cycle 4 NEW
+									// npc will attack back after being hit
+									else 
+									{
+										Timer timer = new Timer();
+										timer.schedule(new TimerTask() {
+											  @Override
+											  public void run() {
+												  System.out.println("timer run");
+													try{
+														JavaAudioPlaySoundExample("/sounds/Hit_Hurt.wav");}
+														catch (Exception ex) {}
+													playerMob.setHealth(playerMob.getCurrHealth()-1);
+											  }
+											}, 700);
+
 									}
 									currentMap.getMobs().get(j).setIsAttacked(true);
 								}
@@ -1452,6 +1472,7 @@ public class Judgement extends Game {
 			updateAttackBounds();
 		}
 		
+		/*
 		for (int i = 0; i < currentMap.getMobs().size() - 1; i++)
 		{
 			if (currentMap.getMobs().get(i).attacking())
@@ -1497,6 +1518,7 @@ public class Judgement extends Game {
 					
 										if (currentMap.getMobs().get(playerIndex).getCurrHealth() <= 0)
 										{
+											System.out.println("AAAAA, DEAD");
 											currentMap.getMobs().get(playerIndex).setHealth(0);
 											currentMap.getMobs().remove(playerIndex);
 										}
@@ -1505,10 +1527,10 @@ public class Judgement extends Game {
 								playerHit = true;
 							//}
 					}
-					}
 				}
 			}
-		}
+		}*/
+	}
 	
 	
 	
