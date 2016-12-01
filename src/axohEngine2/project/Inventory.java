@@ -72,21 +72,40 @@ public class Inventory
 	
 	public void render(JFrame frame, Graphics2D g2d)
 	{
+		if(index >= maxItemType){
+			index = maxItemType - 1;
+		}
+		
 		//-------------USED TO GENERATE BLACK BOX BACKGROUND--------//
 		g2d.setColor(Color.white);
 		g2d.drawRect(770, 100, 350, 460);  
         g2d.setColor(Color.black);  
         g2d.fillRect(770, 100, 350, 460);
         
+        if(itemShow.getItemTotal()==0){
+        	
+        	textExit = "-----------Press X to exit-----------";	
+    		f = new Font("Helvetica", Font.PLAIN, 25); //Font Helvetica Size 25
+    		printString(textExit, 772, 550, g2d);
+    		
+        	return;
+        }
+        
        //-----------SCRUM CYCLE 2 NEW-------------//
         int x = 780;
 		int y = 120 + this.index * 40;
 		g2d.setColor(Color.yellow);
 		g2d.fillOval(x, y, 24, 24);
+		
         
         //count = 1;
         f = new Font("Helvetica", Font.PLAIN, 30);
         int yStart = 110;
+        
+        System.out.println("MIAO");
+        System.out.println(itemShow.getNWeapon());
+        System.out.println(itemShow.getNHealer());
+        System.out.println(itemShow.getItemTotal());
      
         for(int i = 0; i < itemShow.getNWeapon(); i++){
         	//System.out.println("./res/textures/items/" + itemShow.getWeaponName(i) + ".png");

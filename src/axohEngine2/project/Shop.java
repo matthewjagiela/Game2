@@ -118,7 +118,7 @@ public class Shop {
         {
         	showIcon("./res/textures/items/potion.png", 560, 110, 40, 40, g2d);
         	printString("Potion", 620, 140, g2d);
-        	printString("HP + 30", 560, 180, g2d);
+        	printString("HP + 3", 560, 180, g2d);
         	printString("Price: 25 Ruby", 560, 220, g2d);
         }
         
