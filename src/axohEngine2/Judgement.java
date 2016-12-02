@@ -34,6 +34,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
+
 //import sun.org.mozilla.javascript.internal.ast.Loop;
 import axohEngine2.entities.AnimatedSprite;
 import axohEngine2.entities.DIRECTION;
@@ -1458,7 +1460,7 @@ public class Judgement extends Game {
 									
 										else if (randomNum == 1)
 										{
-											Healer tmp = new Healer("Potion", 30);
+											Healer tmp = new Healer("Potion", 3);
 											goods.addHealer(tmp, 1);
 											
 											// for pop-up msg
@@ -1468,7 +1470,7 @@ public class Judgement extends Game {
 										}
 										
 										else {
-											Healer tmp = new Healer("Super Potion", 100);
+											Healer tmp = new Healer("Super Potion", 10);
 											goods.addHealer(tmp, 1);
 											
 											// for pop-up msg
@@ -1483,7 +1485,7 @@ public class Judgement extends Game {
 												  System.out.println("timer run");
 											    renderItemGetsScreen = false;
 											  }
-											}, 1000);
+											}, 2000);
 										
 									} 
 									// SCRUM Cycle 4 NEW
@@ -1764,7 +1766,7 @@ public class Judgement extends Game {
 						
 						else if (randomNum == 4)
 						{
-							Healer tmp = new Healer("Super Potion", 100);
+							Healer tmp = new Healer("Super Potion", 10);
 							goods.addHealer(tmp, 1);
 							
 							// for pop-up msg
@@ -1775,7 +1777,7 @@ public class Judgement extends Game {
 						
 						else if (randomNum == 5)
 						{
-							Healer tmp = new Healer("Potion", 30);
+							Healer tmp = new Healer("Potion", 3);
 							goods.addHealer(tmp, 1);
 							
 							// for pop-up msg
@@ -1798,7 +1800,7 @@ public class Judgement extends Game {
 								  System.out.println("timer run");
 							    renderItemGetsScreen = false;
 							  }
-							}, 1000);
+							}, 2000);
 						// play chest opening sound
 						try{
 							JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
@@ -2209,7 +2211,7 @@ public class Judgement extends Game {
 					}
 					else if(shop.getIndex() == 1)
 					{
-						Healer tmp = new Healer("Potion", 30);
+						Healer tmp = new Healer("Potion", 3);
 						goods.addHealer(tmp, 1);
 						textbox.setTextBox("Get Potion * 1");
 					}
@@ -2333,12 +2335,46 @@ public class Judgement extends Game {
 			{
 				if (keyUseItem)
 				{
+					// use weapon
+					// not yet effective
 					if(inventory.getIndex() < goods.getNWeapon())
 					{
 						goods.removeWeapon(inventory.getIndex(), 1);
 						keyUseItem = false;
+						inputWait = 10;
 					}
-					inputWait = 10;
+					
+					// use healer
+					else
+					{
+						if(goods.getHealerName(inventory.getIndex() - goods.getNWeapon()).equals("Potion"))
+						{
+							System.out.println("Potion used");
+							playerMob.setHealth(playerMob.getCurrHealth() + 3);
+							if(playerMob.getCurrHealth() > 35)
+								playerMob.setHealth(35);
+							try{
+								JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
+								catch (Exception ex) {}
+							goods.removeHealer(inventory.getIndex() - goods.getNWeapon(), 1);
+							keyUseItem = false;
+							inputWait = 10;
+						} 
+						else if (goods.getHealerName(inventory.getIndex() - goods.getNWeapon()).equals("Super Potion"))
+						{
+							System.out.println("Super Potion used");
+							playerMob.setHealth(playerMob.getCurrHealth() + 10);
+							if(playerMob.getCurrHealth() > 35)
+								playerMob.setHealth(35);
+							try{
+								JavaAudioPlaySoundExample("/sounds/Open_Chest.wav");}
+								catch (Exception ex) {}
+							goods.removeHealer(inventory.getIndex() - goods.getNWeapon(), 1);
+							keyUseItem = false;
+							inputWait = 10;
+						}
+					}
+					
 				}
 				if (keyCancel)
 				{

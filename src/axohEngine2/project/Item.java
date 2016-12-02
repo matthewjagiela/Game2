@@ -31,6 +31,18 @@ public class Item
 		return -1;
 	}
 	
+	public int removeHealer(Healer healer, int nHealer)
+	{
+		for(int i = 0; i < healers.size(); i++)
+		{
+			if(healers.get(i).isSame(healer))
+			{
+				return(this.removeHealer(i, nHealer));
+			}
+		}
+		return -1;
+	}
+	
 	public int removeWeapon(int pos, int nWeapon){
 		if(pos >= weapons.size()){
 			return -1;
@@ -42,9 +54,38 @@ public class Item
 			if(numWeapon.get(pos) == nWeapon){
 				weapons.remove(pos);
 				numWeapon.remove(pos);
+				itemTotal = itemTotal - 1;
 				return 1;
 			} else {
 				numWeapon.set(pos, numWeapon.get(pos) - nWeapon);
+				return 1;
+			}
+		}
+	}
+	
+	public int removeHealer(int pos, int nHealer)
+	{
+		if(pos >= healers.size())
+		{
+			return -1;
+		}
+		
+		if(numHealer.get(pos) < nHealer)
+		{
+			return 0;
+		}
+		else
+		{
+			if(numHealer.get(pos) == nHealer)
+			{
+				healers.remove(pos);
+				numHealer.remove(pos);
+				itemTotal = itemTotal - 1;
+				return 1;
+			}
+			else
+			{
+				numHealer.set(pos, numHealer.get(pos) - nHealer);
 				return 1;
 			}
 		}
