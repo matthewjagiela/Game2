@@ -224,7 +224,7 @@ public class Judgement extends Game {
 	Tutorial tutorial = new Tutorial(); //Control Screen SCRUM 2
 	ItemGetsScreen itemGetsScreen = new ItemGetsScreen(); // Control the item display with chest opening and NPC death SCRUM 3
 	String[] dialogue = quest.getDialogue();
-	private int dialogueTracker = 0;
+	private int dialogueTracker = -1;
 	private int dialogueWait = 0;
 	
 	String intersectedNPC = "";
@@ -1167,9 +1167,6 @@ public class Judgement extends Game {
 						}
 						else
 						{
-							if(renderTextbox){
-								renderTextbox = false;
-							}
 							intersectSprite = false;
 						}
 					}
@@ -2102,7 +2099,7 @@ public class Judgement extends Game {
 				{
 					if (dialogueWait <= 0) {
 						//ArrayList<String>dialogueList = new ArrayList<String>();
-					
+						
 							//System.out.println(dialogueTracker);
 							//textbox.setTextBox(dialogue[dialogueTracker]);
 							//dialogueWait = 6;
@@ -2115,31 +2112,10 @@ public class Judgement extends Game {
 							renderShop = true;
 						}
 						else if(intersectedNPC.equals("Hoffman")){
-							//textbox.setTextBox("Hello I am professor Hoffman!");
-							String[] dialogue = quest.getHoffmanDialogue();
-							System.out.println("Dialogue Tracker = " + dialogueTracker);
-							if(dialogueTracker > dialogue.length - 1){
-								System.out.println("False");
-								renderTextbox = false;
-								dialogueTracker = 0;
-								
-							}
-							else{
-								textbox.setTextBox(dialogue[dialogueTracker]);
-								dialogueTracker++;
-							}
-						
+							textbox.setTextBox("Hello I am professor Hoffman!");
 						}
 						else{
-							String[]dialogue = quest.getBlakeDialogue();
-							if(dialogueTracker > dialogue.length){
-								renderTextbox = false;
-								dialogueTracker = 0;
-							}
-							else{
-								textbox.setTextBox(dialogue[dialogueTracker]);
-								dialogueTracker++;
-							}
+							textbox.setTextBox("Hello I am professor Duncan!");
 						}
 					}
 					if (intersectTile && !intersectedTile.getEventType().getName().equals("Nothing") &&
@@ -2456,44 +2432,17 @@ public class Judgement extends Game {
 						//System.out.println(dialogueTracker);
 						//textbox.setTextBox(dialogue[dialogueTracker]);
 						//dialogueWait = 6;
-						//dialogueTracker++
+						//dialogueTracker++;
 					if(intersectedNPC.equals("Blake")){
-						textbox.setTextBox("Hello I am professor Blake! Thanks for shopping with us!");
-						
-						// render the shop screen
-						// exit by pressing x
-						renderShop = true;
+						textbox.setTextBox("Hello I am professor Blake!");
 					}
 					else if(intersectedNPC.equals("Hoffman")){
-						//textbox.setTextBox("Hello I am professor Hoffman!");
-						String[] dialogue = quest.getHoffmanDialogue();
-						System.out.println("Dialogue Tracker = " + dialogueTracker);
-						if(dialogueTracker > dialogue.length - 1){
-							System.out.println("False");
-							intersectSprite = false;
-							renderTextbox = false;
-							canEnter = true;
-							canInGameMenu = true; 
-							dialogueTracker = 0;
-							
-						}
-						else{
-							textbox.setTextBox(dialogue[dialogueTracker]);
-							dialogueTracker++;
-						}
-					
+						textbox.setTextBox("Hello I am professor Hoffman!");
+						
 					}
 					else{
-						String[]dialogue = quest.getBlakeDialogue();
-						if(dialogueTracker > dialogue.length){
-							dialogueTracker = 0;
-						}
-						else{
-							textbox.setTextBox(dialogue[dialogueTracker]);
-							dialogueTracker++;
-						}
-					} ;
-					
+						textbox.setTextBox("Hello I am professor Duncan!");
+					}
 				}
 				
 			}
@@ -2580,7 +2529,6 @@ public class Judgement extends Game {
 			// It might be best to just not touch movement ever again after this
 			if (canMove)
 			{	
-				
 				//A or left arrow(move left)
 				if(keyLeft && !keyRight && !keyUp && !keyDown) {
 					xa = xa + 1 + playerSpeed;

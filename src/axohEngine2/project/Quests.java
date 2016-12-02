@@ -10,15 +10,6 @@ public class Quests {
 
 	// 66 dialogue boxes needed
 	// There are breaks where the quests should be inserted
-	String[] hoffmanDialogue = new String[]{
-			"Hoffman: Hello I am Professor Hoffman"
-	};
-	String[] duncanDialogue = new String[]{
-		"Duncan: Hello I am Professor Duncan"
-	};
-	String[] blakeDialogue = new String[]{
-			"Blake: Hello I am Professor Blake"
-	};
 	String[] dialogue = new String[] {
 
 			"Mom: Wake up honey, it's time to get up!", "You: Ugh mom I don't want to. It's too early.",
@@ -126,15 +117,6 @@ public class Quests {
 
 	public String[] getDialogue() {
 		return dialogue;
-	}
-	public String[] getHoffmanDialogue(){
-		return hoffmanDialogue;
-	}
-	public String[] getBlakeDialogue(){
-		return blakeDialogue;
-	}
-	public String[] getDuncanDialogue(){
-		return duncanDialogue;
 	}
 	// 16 Quest boxes needed
 	/**
